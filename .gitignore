@@ -1,0 +1,23 @@
+# KiCad -- local/generated files, not design sources
+# (git does not support trailing comments on pattern lines)
+
+# per-user project display settings
+*.kicad_prl
+# auto-save backups
+*-backups/
+# footprint cache
+fp-info-cache
+# KiCad 10 local history (contains its own nested git repo)
+.history/
+# editor lock files
+*.lck
+# intermediate backups from scripted edits
+*.bak
+
+# Python bytecode (converter/)
+__pycache__/
+*.pyc
+
+# OS cruft
+Thumbs.db
+.DS_Store
