@@ -90,7 +90,11 @@ art and no package mappings.
 ### KiCad project
 
 `Schematics/RejsaCAN v3.x (ESP32-S3 based board)/KiCad/` holds a native KiCad 10 project derived from the
-EasyEDA JSON, with footprints assigned and a PCB generated from the netlist (parts placed, unrouted).
+EasyEDA JSON, with footprints assigned and a PCB generated from the netlist. The board is
+**31.496 × 49.530 mm** with a 18.034 × 5.969 mm notch between the top tabs, and carries four 2.59 mm NPTH
+mounting holes — outline and holes both traced from the fabricated board's `Gerber.zip`/`DRL`, not drawn
+by hand. Parts are placed but **not routed**: no tracks, no vias, no copper zones. Placement and routing
+are the remaining work.
 
 Things to know before editing it:
 
@@ -101,12 +105,19 @@ Things to know before editing it:
   (`BLUE`→`BLUE1`, `CAN`→`CAN1`, `PROG`→`PROG1`, …). These now differ from the silkscreen on the
   fabricated v3.4 board.
 - `RejsaCAN.pretty/` is a project-local footprint library registered via `fp-lib-table`. It exists because
-  four parts have no usable stock equivalent:
+  five parts have no usable stock equivalent:
   - `microSD_ATOM_MR01A-01211` — LCSC C479742; no stock KiCad match
   - `L_Sunltec_SLP6028S_6.0x6.0mm` — stock `L_6.3x6.3_H3` has pads 0.5 mm too far apart
   - `SW_Push_GSwitch_GT-TC029B` — stock KMR2 has 4 pads; the real part has 2
   - `USB_C_Receptacle_GT-USB-7010ASV_MergedPins` — the imported symbol merges pins the EasyEDA way
     (`A1B12`, `A4B9`, …), so stock pad names don't map
+  - `MountingHole_2.59mm_NPTH` — the fabricated hole size; stock offers 2.5 mm and 2.7 mm, neither exact
+- The four mounting holes (`H1`–`H4`) carry the `board_only` attribute, i.e. KiCad's "not in schematic".
+  That is what stops *Update PCB from Schematic* deleting them for having no matching symbol — don't
+  clear it, and don't "fix" them by adding symbols.
+- Board setup's min-hole rule (0.3 mm) is stricter than the board that was actually fabricated, which used
+  0.254 mm drills. DRC therefore reports ~12 `drill_out_of_range` errors against the stock
+  ESP32-S3-WROOM-1 footprint's 0.2 mm thermal vias. These are a rules-vs-reality mismatch, not defects.
 - Schematic and PCB must be saved together. Annotating in the schematic editor writes designators into
   the `.kicad_pcb` on *Update PCB from Schematic*, but leaves the `.kicad_sch` dirty in memory — save both
   or the two files disagree.
