@@ -13,6 +13,9 @@ fp-info-cache
 *.lck
 # intermediate backups from scripted edits
 *.bak
+# generated manufacturing output (see KiCad/fabrication/README.md)
+**/KiCad/fabrication/*
+!**/KiCad/fabrication/README.md
 
 # Python bytecode (converter/)
 __pycache__/
