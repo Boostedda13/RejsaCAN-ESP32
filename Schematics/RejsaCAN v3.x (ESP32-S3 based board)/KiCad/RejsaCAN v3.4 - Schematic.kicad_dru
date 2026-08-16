@@ -15,10 +15,20 @@
 #
 # Scoped to tracks on purpose: the passives on this net are 0402/0603, whose own
 # pad-to-pad gap is ~0.5mm and cannot be widened by a routing rule. Component
-# choice sets the floor at the parts; routing is where the 0.6mm is winnable.
+# choice sets the floor at the parts; routing is where the spacing is winnable.
+#
+# SET TO 0.35mm, NOT THE 0.6mm IPC-2221 WANTS -- and that is a real compromise,
+# not an oversight. 0.6mm was tried and measured: on two layers this board cannot
+# be routed with it (13 nets left unrouted, against 4 at 0.35mm). 31.5 x 49.5mm
+# with an ESP32-S3 module over a third of it does not have the room.
+#
+# 0.35mm is 3.5x JLCPCB's floor and matches what the fabricated v3.4 shipped
+# with. Raise this to 0.6mm on the 4-layer respin, where moving signals to inner
+# layers frees the surface -- that is the right place to buy full load-dump
+# spacing, rather than compromising the routing here.
 # ---------------------------------------------------------------------------
-(rule "battery net track spacing (IPC-2221 B2, 31-50V)"
-	(constraint clearance (min 0.6mm))
+(rule "battery net track spacing (2-layer compromise; 0.6mm on 4-layer)"
+	(constraint clearance (min 0.35mm))
 	(condition "A.NetClass == 'Battery' && A.Type == 'Track'"))
 
 # ---------------------------------------------------------------------------
