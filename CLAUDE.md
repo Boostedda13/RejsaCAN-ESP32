@@ -93,8 +93,14 @@ art and no package mappings.
 EasyEDA JSON, with footprints assigned and a PCB generated from the netlist. The board is
 **31.496 × 49.530 mm** with a 18.034 × 5.969 mm notch between the top tabs, and carries four 2.59 mm NPTH
 mounting holes — outline and holes both traced from the fabricated board's `Gerber.zip`/`DRL`, not drawn
-by hand. Parts are placed but **not routed**: no tracks, no vias, no copper zones. Placement and routing
-are the remaining work.
+by hand. Component placement reproduces the fabricated board (recovered by matching footprints against
+the pad cloud in the mask-layer Gerbers); `SD-CARD1` and `JUMPER1` are on the bottom side, as on the real
+board. The board is **not routed**: no tracks, no vias, no copper zones. Routing is the remaining work.
+
+Design rules live in `.kicad_pro` (constraints + net classes) and `.kicad_dru` (two custom rules). They
+target JLCPCB's economical 2-layer tier; net classes `Battery`/`Power`/`GND`/`CAN`/`USB` carry the
+automotive intent. One thing to fix before ordering: the stock `ESP32-S3-WROOM-1` footprint's 12 thermal
+vias drill at 0.2 mm, below the 0.3 mm that keeps the board in JLCPCB's cheapest process.
 
 Things to know before editing it:
 
