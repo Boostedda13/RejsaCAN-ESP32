@@ -1,0 +1,61 @@
+(version 1)
+
+# Custom DRC rules for RejsaCAN v3.4.
+#
+# Board-setup constraints hold the JLCPCB 2-layer floors. These two rules cover
+# what a flat global constraint cannot express.
+
+# ---------------------------------------------------------------------------
+# 1. Automotive spacing on the raw car supply.
+#
+# VCC is the 5-24V input straight off the vehicle. A 24V system's load dump
+# (ISO 7637-2 pulse 5a) puts this net well above its nominal rail, so IPC-2221
+# table 6-1 row B2 (external conductors, uncoated, <=3050m) asks for 0.6mm at
+# 31-50V rather than the 0.1mm that applies at 0-30V.
+#
+# Scoped to tracks on purpose: the passives on this net are 0402/0603, whose own
+# pad-to-pad gap is ~0.5mm and cannot be widened by a routing rule. Component
+# choice sets the floor at the parts; routing is where the spacing is winnable.
+#
+# SET TO 0.35mm, NOT THE 0.6mm IPC-2221 WANTS -- and that is a real compromise,
+# not an oversight. 0.6mm was tried and measured: on two layers this board cannot
+# be routed with it (13 nets left unrouted, against 4 at 0.35mm). 31.5 x 49.5mm
+# with an ESP32-S3 module over a third of it does not have the room.
+#
+# 0.35mm is 3.5x JLCPCB's floor and matches what the fabricated v3.4 shipped
+# with. Raise this to 0.6mm on the 4-layer respin, where moving signals to inner
+# layers frees the surface -- that is the right place to buy full load-dump
+# spacing, rather than compromising the routing here.
+# ---------------------------------------------------------------------------
+(rule "battery net track spacing (2-layer compromise; 0.6mm on 4-layer)"
+	(constraint clearance (min 0.35mm))
+	(condition "A.NetClass == 'Battery' && A.Type == 'Track'"))
+
+# ---------------------------------------------------------------------------
+# 2. Documented exception: USB-C board-lock holes.
+#
+# The GT-USB-7010ASV puts its NPTH board locks 0.1944mm from the plated GND
+# through-holes. That is the vendor's own geometry, and it is below JLCPCB's
+# published hole-to-hole spacing -- but the fabricated v3.4 board carries it, so
+# JLC evidently accepts it on this part.
+#
+# Narrowed to pairs inside USBC1 so the exception cannot silently excuse a real
+# hole-spacing problem anywhere else on the board.
+# ---------------------------------------------------------------------------
+(rule "USB-C vendor board-lock hole spacing (accepted exception)"
+	(constraint hole_clearance (min 0.15mm))
+	(condition "A.memberOfFootprint('USBC1') && B.memberOfFootprint('USBC1')"))
+
+# ---------------------------------------------------------------------------
+# 3. Pad-to-pad spacing is set by the parts, not by the router.
+#
+# With the footprints corrected to the geometry actually fabricated, U2's real
+# 2.045mm pads come within 0.189mm of C11 -- that is the board that was built and
+# is working. JLCPCB's floor for SMD pads on different nets is 0.15mm, so it is
+# manufacturable; it is only under the 0.2mm the net classes ask of *routing*.
+#
+# Scoped to pad-against-pad so tracks and vias keep the full net-class clearance.
+# ---------------------------------------------------------------------------
+(rule "as-fabricated component pad spacing"
+	(constraint clearance (min 0.15mm))
+	(condition "A.Type == 'Pad' && B.Type == 'Pad'"))

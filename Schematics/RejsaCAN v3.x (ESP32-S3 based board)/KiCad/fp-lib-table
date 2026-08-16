@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "RejsaCAN")(type "KiCad")(uri "${KIPRJMOD}/RejsaCAN.pretty")(options "")(descr "RejsaCAN project footprints"))
+)
