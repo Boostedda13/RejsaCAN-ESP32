@@ -20143,7 +20143,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "RF_Module:ESP32-S3-WROOM-1"
+		(property "Footprint" "RejsaCAN:ESP32-S3-WROOM-1_RejsaCAN"
 			(at 78.74 41.91 0)
 			(hide yes)
 			(show_name no)

@@ -9670,7 +9670,7 @@
 			)
 		)
 	)
-	(footprint "RF_Module:ESP32-S3-WROOM-1"
+	(footprint "RejsaCAN:ESP32-S3-WROOM-1_RejsaCAN"
 		(layer "F.Cu")
 		(uuid "a561b967-05f1-4561-9f6d-1af9b39a2f67")
 		(at 125.848 192.9662)
@@ -10455,7 +10455,7 @@
 		(pad "41" thru_hole circle
 			(at -2.9 1.76 90)
 			(size 0.6 0.6)
-			(drill 0.2)
+			(drill 0.3)
 			(property pad_prop_heatsink)
 			(layers "*.Cu" "F.Mask")
 			(remove_unused_layers no)
@@ -10468,7 +10468,7 @@
 		(pad "41" thru_hole circle
 			(at -2.9 3.16)
 			(size 0.6 0.6)
-			(drill 0.2)
+			(drill 0.3)
 			(property pad_prop_heatsink)
 			(layers "*.Cu" "F.Mask")
 			(remove_unused_layers no)
@@ -10481,7 +10481,7 @@
 		(pad "41" thru_hole circle
 			(at -2.2 1.06)
 			(size 0.6 0.6)
-			(drill 0.2)
+			(drill 0.3)
 			(property pad_prop_heatsink)
 			(layers "*.Cu" "F.Mask")
 			(remove_unused_layers no)
@@ -10494,7 +10494,7 @@
 		(pad "41" thru_hole circle
 			(at -2.2 2.46)
 			(size 0.6 0.6)
-			(drill 0.2)
+			(drill 0.3)
 			(property pad_prop_heatsink)
 			(layers "*.Cu" "F.Mask")
 			(remove_unused_layers no)
@@ -10507,7 +10507,7 @@
 		(pad "41" thru_hole circle
 			(at -2.2 3.86)
 			(size 0.6 0.6)
-			(drill 0.2)
+			(drill 0.3)
 			(property pad_prop_heatsink)
 			(layers "*.Cu" "F.Mask")
 			(remove_unused_layers no)
@@ -10520,7 +10520,7 @@
 		(pad "41" thru_hole circle
 			(at -1.5 1.76)
 			(size 0.6 0.6)
-			(drill 0.2)
+			(drill 0.3)
 			(property pad_prop_heatsink)
 			(layers "*.Cu" "F.Mask")
 			(remove_unused_layers no)
@@ -10544,7 +10544,7 @@
 		(pad "41" thru_hole circle
 			(at -1.5 3.16)
 			(size 0.6 0.6)
-			(drill 0.2)
+			(drill 0.3)
 			(property pad_prop_heatsink)
 			(layers "*.Cu" "F.Mask")
 			(remove_unused_layers no)
@@ -10557,7 +10557,7 @@
 		(pad "41" thru_hole circle
 			(at -0.8 1.06)
 			(size 0.6 0.6)
-			(drill 0.2)
+			(drill 0.3)
 			(property pad_prop_heatsink)
 			(layers "*.Cu" "F.Mask")
 			(remove_unused_layers no)
@@ -10570,7 +10570,7 @@
 		(pad "41" thru_hole circle
 			(at -0.8 2.46)
 			(size 0.6 0.6)
-			(drill 0.2)
+			(drill 0.3)
 			(property pad_prop_heatsink)
 			(layers "*.Cu" "F.Mask")
 			(remove_unused_layers no)
@@ -10583,7 +10583,7 @@
 		(pad "41" thru_hole circle
 			(at -0.8 3.86)
 			(size 0.6 0.6)
-			(drill 0.2)
+			(drill 0.3)
 			(property pad_prop_heatsink)
 			(layers "*.Cu" "F.Mask")
 			(remove_unused_layers no)
@@ -10596,7 +10596,7 @@
 		(pad "41" thru_hole circle
 			(at -0.1 1.76)
 			(size 0.6 0.6)
-			(drill 0.2)
+			(drill 0.3)
 			(property pad_prop_heatsink)
 			(layers "*.Cu" "F.Mask")
 			(remove_unused_layers no)
@@ -10609,7 +10609,7 @@
 		(pad "41" thru_hole circle
 			(at -0.1 3.16)
 			(size 0.6 0.6)
-			(drill 0.2)
+			(drill 0.3)
 			(property pad_prop_heatsink)
 			(layers "*.Cu" "F.Mask")
 			(remove_unused_layers no)
@@ -18931,14 +18931,6 @@
 		(layers "F.Cu" "B.Cu")
 		(net "GND")
 		(uuid "dcc0f635-3ba1-4c94-a992-eb599dca98a0")
-	)
-	(via
-		(at 123.5 193.5)
-		(size 0.7)
-		(drill 0.35)
-		(layers "F.Cu" "B.Cu")
-		(net "GND")
-		(uuid "dd0881a6-44f9-4d63-a3de-bce48d3719ae")
 	)
 	(via
 		(at 115.272 190.797)
