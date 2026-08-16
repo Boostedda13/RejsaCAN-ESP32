@@ -1887,21 +1887,21 @@
 			)
 		)
 		(pad "" np_thru_hole circle
-			(at -2.89 -2.605)
+			(at -2.89 -2.049)
 			(size 0.65 0.65)
 			(drill 0.65)
 			(layers "*.Cu" "*.Mask")
 			(uuid "153f6d57-1bea-4655-a811-d3208035f28e")
 		)
 		(pad "" np_thru_hole circle
-			(at 2.89 -2.605)
+			(at 2.89 -2.049)
 			(size 0.65 0.65)
 			(drill 0.65)
 			(layers "*.Cu" "*.Mask")
 			(uuid "823ee7d6-9a2f-42cf-b69c-66af22f44265")
 		)
 		(pad "1" thru_hole oval
-			(at -4.32 -3.125)
+			(at -4.32 -2.658)
 			(size 1 2.1)
 			(drill oval 0.6 1.7)
 			(property pad_prop_mechanical)
@@ -1913,7 +1913,7 @@
 			(uuid "82694fb8-9060-4895-9308-944cf5b4a1dc")
 		)
 		(pad "2" thru_hole oval
-			(at -4.32 1.075)
+			(at -4.32 1.542)
 			(size 1 1.8)
 			(drill oval 0.6 1.4)
 			(property pad_prop_mechanical)
@@ -1925,7 +1925,7 @@
 			(uuid "57983429-a74f-4fc8-ba1f-78a98995edbe")
 		)
 		(pad "3" thru_hole oval
-			(at 4.32 -3.125)
+			(at 4.32 -2.658)
 			(size 1 2.1)
 			(drill oval 0.6 1.7)
 			(property pad_prop_mechanical)
@@ -1937,7 +1937,7 @@
 			(uuid "e23e3874-983f-4d82-a8ed-a1c4866a5236")
 		)
 		(pad "4" thru_hole oval
-			(at 4.32 1.075)
+			(at 4.32 1.542)
 			(size 1 1.8)
 			(drill oval 0.6 1.4)
 			(property pad_prop_mechanical)
@@ -5523,7 +5523,7 @@
 			)
 		)
 	)
-	(footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+	(footprint "RejsaCAN:SOIC-8_RejsaCAN_5.544mm"
 		(layer "F.Cu")
 		(uuid "523eaa4d-537a-4d20-b6ff-92d784b04130")
 		(at 132.479 217.718999 -90)
@@ -5864,8 +5864,8 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -2.475 -1.905 270)
-			(size 1.95 0.6)
+			(at -2.772 -1.905 270)
+			(size 2.045 0.588)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "CAN_TX")
@@ -5874,8 +5874,8 @@
 			(uuid "a2507659-7c6d-43af-9b6a-a04a7a143c3a")
 		)
 		(pad "2" smd roundrect
-			(at -2.475 -0.635 270)
-			(size 1.95 0.6)
+			(at -2.772 -0.635 270)
+			(size 2.045 0.588)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "GND")
@@ -5884,8 +5884,8 @@
 			(uuid "f5ad16ea-6eb8-4475-9f05-565d9172e2b2")
 		)
 		(pad "3" smd roundrect
-			(at -2.475 0.635 270)
-			(size 1.95 0.6)
+			(at -2.772 0.635 270)
+			(size 2.045 0.588)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "3V3")
@@ -5894,8 +5894,8 @@
 			(uuid "4b607e14-0559-4036-a55d-5b73674d183a")
 		)
 		(pad "4" smd roundrect
-			(at -2.475 1.905 270)
-			(size 1.95 0.6)
+			(at -2.772 1.905 270)
+			(size 2.045 0.588)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "CAN_RX")
@@ -5904,8 +5904,8 @@
 			(uuid "4bed6b70-3562-47e0-a32f-8b35747acaac")
 		)
 		(pad "5" smd roundrect
-			(at 2.475 1.905 270)
-			(size 1.95 0.6)
+			(at 2.772 1.905 270)
+			(size 2.045 0.588)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "unconnected-(U2-VREF-Pad5)")
@@ -5914,8 +5914,8 @@
 			(uuid "33cdbc64-7ec5-4b27-89ac-78667f639f19")
 		)
 		(pad "6" smd roundrect
-			(at 2.475 0.635 270)
-			(size 1.95 0.6)
+			(at 2.772 0.635 270)
+			(size 2.045 0.588)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "CAN_L")
@@ -5924,8 +5924,8 @@
 			(uuid "8db2b076-6ceb-464e-b2ac-2b49c86e321e")
 		)
 		(pad "7" smd roundrect
-			(at 2.475 -0.635 270)
-			(size 1.95 0.6)
+			(at 2.772 -0.635 270)
+			(size 2.045 0.588)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "CAN_H")
@@ -5934,8 +5934,8 @@
 			(uuid "821c4e52-47aa-4637-9891-553e7d259d05")
 		)
 		(pad "8" smd roundrect
-			(at 2.475 -1.905 270)
-			(size 1.95 0.6)
+			(at 2.772 -1.905 270)
+			(size 2.045 0.588)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net "CAN_RS")
@@ -17212,7 +17212,7 @@
 			)
 		)
 	)
-	(footprint "Fuse:Fuse_1812_4532Metric"
+	(footprint "RejsaCAN:Fuse_1812_RejsaCAN_3.706mm"
 		(layer "F.Cu")
 		(uuid "fc2a64aa-4382-4b79-a2fa-932bc2c5ff0f")
 		(at 116.731 226.609)
@@ -17391,8 +17391,8 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -2.1375 0)
-			(size 1.125 3.4)
+			(at -1.853 0)
+			(size 1.407 3.5)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.222222)
 			(net "VCC")
@@ -17401,8 +17401,8 @@
 			(uuid "44871f8b-3656-4fc8-9b8b-a020188bc543")
 		)
 		(pad "2" smd roundrect
-			(at 2.1375 0)
-			(size 1.125 3.4)
+			(at 1.853 0)
+			(size 1.407 3.5)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.222222)
 			(net "Net-(D6-K)")
