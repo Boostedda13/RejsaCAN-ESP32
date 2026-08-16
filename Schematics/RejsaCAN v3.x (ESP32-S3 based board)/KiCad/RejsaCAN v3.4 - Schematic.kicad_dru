@@ -1,0 +1,37 @@
+(version 1)
+
+# Custom DRC rules for RejsaCAN v3.4.
+#
+# Board-setup constraints hold the JLCPCB 2-layer floors. These two rules cover
+# what a flat global constraint cannot express.
+
+# ---------------------------------------------------------------------------
+# 1. Automotive spacing on the raw car supply.
+#
+# VCC is the 5-24V input straight off the vehicle. A 24V system's load dump
+# (ISO 7637-2 pulse 5a) puts this net well above its nominal rail, so IPC-2221
+# table 6-1 row B2 (external conductors, uncoated, <=3050m) asks for 0.6mm at
+# 31-50V rather than the 0.1mm that applies at 0-30V.
+#
+# Scoped to tracks on purpose: the passives on this net are 0402/0603, whose own
+# pad-to-pad gap is ~0.5mm and cannot be widened by a routing rule. Component
+# choice sets the floor at the parts; routing is where the 0.6mm is winnable.
+# ---------------------------------------------------------------------------
+(rule "battery net track spacing (IPC-2221 B2, 31-50V)"
+	(constraint clearance (min 0.6mm))
+	(condition "A.NetClass == 'Battery' && A.Type == 'Track'"))
+
+# ---------------------------------------------------------------------------
+# 2. Documented exception: USB-C board-lock holes.
+#
+# The GT-USB-7010ASV puts its NPTH board locks 0.1944mm from the plated GND
+# through-holes. That is the vendor's own geometry, and it is below JLCPCB's
+# published hole-to-hole spacing -- but the fabricated v3.4 board carries it, so
+# JLC evidently accepts it on this part.
+#
+# Narrowed to pairs inside USBC1 so the exception cannot silently excuse a real
+# hole-spacing problem anywhere else on the board.
+# ---------------------------------------------------------------------------
+(rule "USB-C vendor board-lock hole spacing (accepted exception)"
+	(constraint hole_clearance (min 0.15mm))
+	(condition "A.memberOfFootprint('USBC1') && B.memberOfFootprint('USBC1')"))
