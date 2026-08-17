@@ -1,35 +1,37 @@
 (version 1)
 
-# Custom DRC rules for RejsaCAN v3.4.
+# Custom DRC rules for RejsaCAN v3.5.
 #
-# Board-setup constraints hold the JLCPCB 2-layer floors. These two rules cover
-# what a flat global constraint cannot express.
+# Board-setup constraints hold the JLCPCB floors. These rules cover what a flat
+# global constraint cannot express.
 
 # ---------------------------------------------------------------------------
 # 1. Automotive spacing on the raw car supply.
 #
-# VCC is the 5-24V input straight off the vehicle. A 24V system's load dump
-# (ISO 7637-2 pulse 5a) puts this net well above its nominal rail, so IPC-2221
-# table 6-1 row B2 (external conductors, uncoated, <=3050m) asks for 0.6mm at
-# 31-50V rather than the 0.1mm that applies at 0-30V.
+# CORRECTED: the earlier version of this rule cited IPC-2221 table 6-1 row B2
+# and called 0.35mm a compromise against a "required" 0.6mm. That was the wrong
+# column. Table 6-1 is indexed by COATING, not by layer:
 #
-# Scoped to tracks on purpose: the passives on this net are 0402/0603, whose own
-# pad-to-pad gap is ~0.5mm and cannot be widened by a routing rule. Component
-# choice sets the floor at the parts; routing is where the spacing is winnable.
+#   B1  internal conductors                     0.10mm  (31-50V and 51-100V)
+#   B2  external, UNCOATED                      0.60mm
+#   B4  external, permanent polymer coating     0.13mm  <-- this board
+#   A6  external, uncoated, TERMINATIONS/pads   0.40mm @31-50V, 0.50mm @51-100V
 #
-# SET TO 0.35mm, NOT THE 0.6mm IPC-2221 WANTS -- and that is a real compromise,
-# not an oversight. 0.6mm was tried and measured: on two layers this board cannot
-# be routed with it (13 nets left unrouted, against 4 at 0.35mm). 31.5 x 49.5mm
-# with an ESP32-S3 module over a third of it does not have the room.
+# Every track on this board is under solder mask, so B4 applies and asks 0.13mm.
+# 0.35mm is 2.7x that, not a shortfall. The old "raise to 0.6mm on the 4-layer
+# respin" note was chasing B2 and has been removed -- it was tried on 4 layers
+# and cost the power corner its routability for no electrical gain.
 #
-# 0.35mm is 3.5x JLCPCB's floor and matches what the fabricated v3.4 shipped
-# with. Raise this to 0.6mm on the 4-layer respin, where moving signals to inner
-# layers frees the surface -- that is the right place to buy full load-dump
-# spacing, rather than compromising the routing here.
+# Design band: the board is offered for 5-24V systems, so ISO 16750-2 applies
+# (regulator failure 34V/60min, centrally-suppressed load dump ~58V) -> the
+# 51-100V row is the one to design to. B4 is still 0.13mm there.
+#
+# Scoped to tracks: pad-to-pad spacing is set by the parts, see rule 4.
+# Covers Battery (VCC) AND Battery_Out (VBAT_IN, the raw pre-fuse input).
 # ---------------------------------------------------------------------------
-(rule "battery net track spacing (2-layer compromise; 0.6mm on 4-layer)"
+(rule "automotive battery track spacing"
 	(constraint clearance (min 0.35mm))
-	(condition "A.NetClass == 'Battery' && A.Type == 'Track'"))
+	(condition "(A.NetClass == 'Battery' || A.NetClass == 'Battery_Out') && A.Type == 'Track'"))
 
 # ---------------------------------------------------------------------------
 # 2. Documented exception: USB-C board-lock holes.
@@ -47,15 +49,42 @@
 	(condition "A.memberOfFootprint('USBC1') && B.memberOfFootprint('USBC1')"))
 
 # ---------------------------------------------------------------------------
-# 3. Pad-to-pad spacing is set by the parts, not by the router.
+# 3. Bare battery-voltage pads.
+#
+# Pads are uncoated metal, so IPC-2221 row A6 governs them, not B4: 0.50mm at
+# 51-100V. Bare copper at battery potential is where condensation and salt
+# actually bridge -- mask-covered track spacing is not the exposure.
+#
+# This rule exists to make that exposure VISIBLE in DRC. Violations here are not
+# routing errors; they are component-choice consequences (an 0402 land pattern
+# cannot yield 0.5mm). Fix by moving the offending passive to 0603/0805, not by
+# rerouting.
+# ---------------------------------------------------------------------------
+# Excludes pads of the SAME footprint: IPC-2221 governs BOARD conductor spacing,
+# whereas the gap between two pins of one package is fixed by that package and is
+# covered by the component's own qualification. U4 is a TSOT-23-6 on 0.95mm pitch
+# -- no board rule can widen it, and flagging it every build is noise that hides
+# the violations that ARE actionable.
+(rule "bare battery-voltage pad spacing (IPC-2221 A6)"
+	(constraint clearance (min 0.50mm))
+	(condition "(A.NetClass == 'Battery' || A.NetClass == 'Battery_Out') && A.Type == 'Pad' && B.Type == 'Pad' && !A.sameFootprintAs(B)"))
+
+# ---------------------------------------------------------------------------
+# 4. Pad-to-pad spacing is set by the parts, not by the router.
 #
 # With the footprints corrected to the geometry actually fabricated, U2's real
 # 2.045mm pads come within 0.189mm of C11 -- that is the board that was built and
 # is working. JLCPCB's floor for SMD pads on different nets is 0.15mm, so it is
 # manufacturable; it is only under the 0.2mm the net classes ask of *routing*.
 #
-# Scoped to pad-against-pad so tracks and vias keep the full net-class clearance.
+# NARROWED: this used to be an unscoped "any pad against any pad" rule, which
+# silently granted 0.15mm to every pad on the board including battery-voltage
+# ones. It is now limited to the specific as-fabricated pairs it was written for.
 # ---------------------------------------------------------------------------
-(rule "as-fabricated component pad spacing"
+(rule "as-fabricated component pad spacing (U2/C11)"
 	(constraint clearance (min 0.15mm))
-	(condition "A.Type == 'Pad' && B.Type == 'Pad'"))
+	(condition "A.memberOfFootprint('U2') && B.memberOfFootprint('C11')"))
+
+(rule "as-fabricated component pad spacing (C11/U2)"
+	(constraint clearance (min 0.15mm))
+	(condition "A.memberOfFootprint('C11') && B.memberOfFootprint('U2')"))

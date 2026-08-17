@@ -779,6 +779,14 @@
       {
         "netclass": "Battery_Out",
         "pattern": "VBAT_IN"
+      },
+      {
+        "netclass": "Battery",
+        "pattern": "Net-(D6-K)"
+      },
+      {
+        "netclass": "Battery",
+        "pattern": "Net-(D6-A)"
       }
     ]
   },
