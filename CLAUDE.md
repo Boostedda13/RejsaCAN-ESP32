@@ -114,10 +114,43 @@ the mask-layer Gerbers. `SD-CARD1` and `JUMPER1` are on the bottom side, as on t
 Design rules live in `.kicad_pro` (constraints + net classes) and `.kicad_dru` (three custom rules).
 They hold JLCPCB's economical tier — min trace 5.9 mil, min drill 0.3 mm, both confirmed against a live
 quote. Net classes `Battery`/`Power`/`GND`/`CAN`/`USB`/`Battery_Sense` carry the automotive intent.
-`Battery` spacing is 0.35 mm, not the 0.6 mm IPC-2221 wants at 31–50 V: 0.6 mm was tried and leaves 13
-nets unroutable on two layers. **Now that the board is 4-layer, raise it** — that was the whole reason
-the respin was wanted. Also note `Net-(D6-A)` and `Net-(D6-K)`, the pre-fuse input segments, match no
-netclass pattern and so route at Default 0.2 mm; add them to `Battery`.
+**`Battery` spacing is 0.35 mm and that is correct — do not "fix" it to 0.6 mm.** This file used to say
+IPC-2221 wants 0.6 mm at 31–50 V and to raise it on the 4-layer respin. That was a misreading, and it
+cost two routing attempts before it was caught. Table 6-1 is indexed by **coating**, not by layer:
+
+| Column | Case | 31–50 V | 51–100 V |
+|---|---|---|---|
+| B1 | internal conductors | 0.10 mm | 0.10 mm |
+| B2 | external, **uncoated** | 0.60 mm | 0.60 mm |
+| B4 | external, **permanent polymer coating** | **0.13 mm** | **0.13 mm** |
+| A6 | external, uncoated **terminations** (bare pads) | 0.40 mm | **0.50 mm** |
+
+Every track here is under solder mask → **B4 → 0.13 mm**, so 0.35 mm already has 2.7× margin. 0.6 mm is
+column B2 and does not apply. It was tried on 4 layers too and made the power corner unroutable for no
+electrical gain. The real exposure is **bare pads (A6)**, where condensation bridges — that is what the
+`.kicad_dru` A6 rule now checks, and it is a component-choice problem (0402 land patterns cannot give
+0.5 mm), not a routing one.
+
+Design band: the board is offered as 5–24 V, so ISO 16750-2 (34 V regulator failure, ~58 V suppressed
+load dump) puts it in the 51–100 V row. B4 is still 0.13 mm there.
+
+`Net-(D6-K)` and `Net-(D6-A)` are now in `Battery`. They had **no netclass pattern at all** and routed
+at Default 0.2 mm while carrying 100 % of the input current — good for ~0.74 A behind a fuse that holds
+at 1.1 A and trips at 2.2 A. The trace was the fuse. Check any new net gets a pattern.
+
+**Keep-outs are not interchangeable.** `U1`'s rule area is a *radiating PCB antenna* and must be on all
+four copper layers — going 2→4 layers without extending it let the new In1 plane flood 97 mm² about
+0.21 mm under the antenna, which detunes it and which DRC cannot see. `J2`'s rule area is a *connector
+body* and must stay F.Cu only — extending it inward deletes the ground reference under the u.FL, which
+is the opposite of what an RF jack wants. Whenever the layer count changes, re-check every rule area's
+layer set against what it is actually protecting.
+
+**Ground stitching is unsolved and should be done in the GUI.** The board has one GND via; the audit
+measured the RF coplanar ground 8.94 mm from any plane crossing and U7's 59 ground pads 11–17 mm.
+Scripted attempts all failed: a 3.0 mm grid of 0.6 mm vias hit the RF target (2.29 mm) but added 31
+errors and cut F.Cu from 4 pour islands to 9; targeted fences and a hole-aware 3.5 mm grid were pruned
+to nothing because the candidate sites sit in pour voids. Place these interactively where the fill is
+visible rather than scripting them.
 
 Two open problems on that branch before it can be routed:
 
