@@ -32047,7 +32047,7 @@
 			)
 		)
 	)
-	(global_label "3V3"
+	(global_label "GNSS_VCC"
 		(shape input)
 		(at 352.86 22.22 0)
 		(effects
@@ -32069,7 +32069,7 @@
 			)
 		)
 	)
-	(global_label "3V3"
+	(global_label "GNSS_VCC"
 		(shape input)
 		(at 352.86 24.76 0)
 		(effects
@@ -32902,7 +32902,7 @@
 			)
 		)
 	)
-	(global_label "3V3"
+	(global_label "GNSS_VCC"
 		(shape input)
 		(at 300 146.19 0)
 		(effects
@@ -33073,7 +33073,7 @@
 			)
 		)
 	)
-	(global_label "3V3"
+	(global_label "GNSS_VCC"
 		(shape input)
 		(at 320 144.92 0)
 		(effects
@@ -33244,7 +33244,7 @@
 			)
 		)
 	)
-	(global_label "GNSS_VDD_RF"
+	(global_label "GNSS_BIAS"
 		(shape input)
 		(at 340 146.19 0)
 		(effects
@@ -33289,7 +33289,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "27nH"
+		(property "Value" "68nH"
 			(at 363.705 146.457 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -33393,7 +33393,7 @@
 			)
 		)
 	)
-	(global_label "GNSS_VDD_RF"
+	(global_label "GNSS_BIAS"
 		(shape input)
 		(at 359.92 150 180)
 		(effects
@@ -34128,5 +34128,860 @@
 	(no_connect
 		(at 352.86 57.78)
 		(uuid "8c5a7a0d-a954-ca95-4eb5-930a38946c99")
+	)
+	(symbol
+		(lib_id "0402WGF1001TCE")
+		(at 365 160 0)
+		(unit 0)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c60b0bce-d40f-8d45-dac4-f29a8922d42a")
+		(property "Reference" "R23"
+			(at 363.501 154.221 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Value" "10R"
+			(at 363.501 156.558 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 365 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 365 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 365 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "0402WGF1001TCE"
+			(at 365 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "UniOhm"
+			(at 365 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" ""
+			(at 365 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 365 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "705a02f6-278a-c096-9258-2a2cfb2584a9")
+		)
+		(pin "2"
+			(uuid "2acaa58e-dcc3-5913-83c8-f992928b64aa")
+		)
+		(instances
+			(project "RejsaCAN v3.4 - Schematic"
+				(path "/16c2f03a-5652-4050-b62b-75ebc6e5d249"
+					(reference "R23")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(global_label "GNSS_VDD_RF"
+		(shape input)
+		(at 359.92 160 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0454c83a-62aa-6a46-8d1a-3355c9ee67b8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 359.92 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GNSS_BIAS"
+		(shape input)
+		(at 370.08 160 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a98b5ed6-9236-949e-42dc-4139560a4a1a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 370.08 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CL05B104KO5NNNC_1")
+		(at 352 160 0)
+		(unit 0)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c4a985bc-ed9e-049b-71a2-86dc17b96266")
+		(property "Reference" "C31"
+			(at 354.54 159.124 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Value" "100pF"
+			(at 354.54 161.435 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 352 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 352 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 352 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "CL05B104KO5NNNC"
+			(at 352 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "SAMSUNG"
+			(at 352 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" ""
+			(at 352 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 352 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a9e8b637-883f-d1f7-d809-6c673b17b4d2")
+		)
+		(pin "1"
+			(uuid "0e4ed51f-6c5c-8359-2207-579a179fc58f")
+		)
+		(instances
+			(project "RejsaCAN v3.4 - Schematic"
+				(path "/16c2f03a-5652-4050-b62b-75ebc6e5d249"
+					(reference "C31")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 352 163.81 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "17121a71-90e5-84c0-d1d2-b0484c113fcb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 352 163.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GNSS_BIAS"
+		(shape input)
+		(at 352 156.19 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0d19288b-f4aa-7d6a-bef8-04b61ba07d05")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 352 156.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CL05B104KO5NNNC_1")
+		(at 338 160 0)
+		(unit 0)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a9db7a26-7062-0717-f701-438571a6c7d8")
+		(property "Reference" "C32"
+			(at 340.54 159.124 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Value" "33pF"
+			(at 340.54 161.435 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 338 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 338 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 338 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "CL05B104KO5NNNC"
+			(at 338 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "SAMSUNG"
+			(at 338 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" ""
+			(at 338 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 338 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "96b19a99-9d9f-1574-34ac-5e95fc87456b")
+		)
+		(pin "1"
+			(uuid "4563d156-2e4a-7d7c-a551-ac0f40474a1d")
+		)
+		(instances
+			(project "RejsaCAN v3.4 - Schematic"
+				(path "/16c2f03a-5652-4050-b62b-75ebc6e5d249"
+					(reference "C32")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 338 163.81 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a0f83930-2593-5439-262d-e7a30930a501")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 338 163.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GNSS_VCC"
+		(shape input)
+		(at 338 156.19 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2ce347a1-05b2-8ea3-4dfa-7a6fd621136c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 338 156.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "SLP6028S100MTT")
+		(at 324 160 0)
+		(unit 0)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2983fe7d-412a-a9da-9ef9-0c16d2866e33")
+		(property "Reference" "FB1"
+			(at 322.705 154.145 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Value" "FerriteBead_600R@100MHz"
+			(at 322.705 156.457 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Footprint" "Inductor_SMD:L_0402_1005Metric"
+			(at 324 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 324 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 324 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "SLP6028S100MTT"
+			(at 324 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Sunltech Tech"
+			(at 324 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" ""
+			(at 324 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 324 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a5ffd5b2-7640-fdbd-e1dd-9a3504d03aed")
+		)
+		(pin "2"
+			(uuid "bf0e7111-d5fc-8659-d529-7672db086684")
+		)
+		(instances
+			(project "RejsaCAN v3.4 - Schematic"
+				(path "/16c2f03a-5652-4050-b62b-75ebc6e5d249"
+					(reference "FB1")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(global_label "3V3"
+		(shape input)
+		(at 318.92 160 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "da755368-c234-5e98-92f5-758b28747190")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 318.92 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GNSS_VCC"
+		(shape input)
+		(at 329.08 160 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dcd9b41b-404f-8b63-5793-c3c3ceb64afa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 329.08 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CL05B104KO5NNNC_1")
+		(at 310 160 0)
+		(unit 0)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a8aa0123-a80f-f1e4-78d9-c9d2071ef89f")
+		(property "Reference" "D13"
+			(at 312.54 159.124 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Value" "TVS_Cj0.6pF"
+			(at 312.54 161.435 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_0402_1005Metric"
+			(at 310 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 310 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 310 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "CL05B104KO5NNNC"
+			(at 310 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "SAMSUNG"
+			(at 310 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" ""
+			(at 310 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 310 160 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "fe33e4e8-6dfa-d723-6a90-d664be20b6e4")
+		)
+		(pin "1"
+			(uuid "25f944c8-4c89-9096-1045-5d69f486cd27")
+		)
+		(instances
+			(project "RejsaCAN v3.4 - Schematic"
+				(path "/16c2f03a-5652-4050-b62b-75ebc6e5d249"
+					(reference "D13")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 310 163.81 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a3efe8df-d938-45f6-eaaa-8bc5e0ffeef3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 310 163.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GNSS_ANT"
+		(shape input)
+		(at 310 156.19 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fb4395d5-1ba1-7560-0fee-e9da389bc068")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 310 156.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 	)
 )
