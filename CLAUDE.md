@@ -95,12 +95,16 @@ EasyEDA JSON, with footprints assigned and a PCB generated from the netlist. The
 mounting holes — outline and holes both traced from the fabricated board's `Gerber.zip`/`DRL`, not drawn
 by hand. Component placement reproduces the fabricated board (recovered by matching footprints against
 the pad cloud in the mask-layer Gerbers); `SD-CARD1` and `JUMPER1` are on the bottom side, as on the real
-board. The board is **not routed**: no tracks, no vias, no copper zones. Routing is the remaining work.
+board. The board is **routed**: 555 tracks, 116 vias, GND pours both layers, DRC clean of every
+electrical class. 16 connections stay open by design — 14 GND pads reaching only a pour island, one VCC
+link spanning top-to-bottom (needs a via, not a track), one 3V3 path in the congested power corner.
+Finish those in the GUI's interactive router, which can shove existing traces; the Python API cannot.
 
-Design rules live in `.kicad_pro` (constraints + net classes) and `.kicad_dru` (two custom rules). They
-target JLCPCB's economical 2-layer tier; net classes `Battery`/`Power`/`GND`/`CAN`/`USB` carry the
-automotive intent. One thing to fix before ordering: the stock `ESP32-S3-WROOM-1` footprint's 12 thermal
-vias drill at 0.2 mm, below the 0.3 mm that keeps the board in JLCPCB's cheapest process.
+Design rules live in `.kicad_pro` (constraints + net classes) and `.kicad_dru` (three custom rules).
+They hold JLCPCB's economical tier — min trace 5.9 mil, min drill 0.3 mm, both confirmed against a live
+quote. Net classes `Battery`/`Power`/`GND`/`CAN`/`USB`/`Battery_Sense` carry the automotive intent.
+`Battery` spacing is 0.35 mm, not the 0.6 mm IPC-2221 wants at 31–50 V: 0.6 mm was tried and leaves 13
+nets unroutable on two layers. Raise it on the 4-layer respin.
 
 Things to know before editing it:
 
@@ -110,8 +114,12 @@ Things to know before editing it:
 - Annotation: KiCad treats letter-only designators as unannotated, so the EasyEDA names gained numbers
   (`BLUE`→`BLUE1`, `CAN`→`CAN1`, `PROG`→`PROG1`, …). These now differ from the silkscreen on the
   fabricated v3.4 board.
-- `RejsaCAN.pretty/` is a project-local footprint library registered via `fp-lib-table`. It exists because
-  five parts have no usable stock equivalent:
+- `RejsaCAN.pretty/` is a project-local footprint library registered via `fp-lib-table`. Eight parts live
+  there — five with no usable stock equivalent, three corrected to the land pattern actually fabricated
+  (measured from the Gerbers' top-copper flashes, not trusted from the library):
+  - `Fuse_1812_RejsaCAN_3.706mm` — stock 1812 land is 4.276 mm pad-to-pad; the real one is 3.706 mm
+  - `SOIC-8_RejsaCAN_5.544mm` — real rows span 5.544 mm with 2.045 × 0.588 pads, not 4.95 / 1.95 × 0.60
+  - `ESP32-S3-WROOM-1_RejsaCAN` — thermal vias drilled out 0.2 → 0.3 mm to hold the economical tier
   - `microSD_ATOM_MR01A-01211` — LCSC C479742; no stock KiCad match
   - `L_Sunltec_SLP6028S_6.0x6.0mm` — stock `L_6.3x6.3_H3` has pads 0.5 mm too far apart
   - `SW_Push_GSwitch_GT-TC029B` — stock KMR2 has 4 pads; the real part has 2
@@ -121,9 +129,8 @@ Things to know before editing it:
 - The four mounting holes (`H1`–`H4`) carry the `board_only` attribute, i.e. KiCad's "not in schematic".
   That is what stops *Update PCB from Schematic* deleting them for having no matching symbol — don't
   clear it, and don't "fix" them by adding symbols.
-- Board setup's min-hole rule (0.3 mm) is stricter than the board that was actually fabricated, which used
-  0.254 mm drills. DRC therefore reports ~12 `drill_out_of_range` errors against the stock
-  ESP32-S3-WROOM-1 footprint's 0.2 mm thermal vias. These are a rules-vs-reality mismatch, not defects.
+- Anything corrected against fabricated geometry lives in `RejsaCAN.pretty` on purpose, so a stock library
+  update cannot silently undo it. Keep the schematic's Footprint field pointing there too.
 - Schematic and PCB must be saved together. Annotating in the schematic editor writes designators into
   the `.kicad_pcb` on *Update PCB from Schematic*, but leaves the `.kicad_sch` dirty in memory — save both
   or the two files disagree.
@@ -139,6 +146,45 @@ the geometry can be recovered from JLCEDA Pro by placing the vendor part and exp
 (pad coordinates, in 0.0001 inch) plus the **NPTH drill file** (mounting posts). Converting those to
 KiCad coordinates is X-preserved, Y-negated — verify the transform against a known part such as a SOIC-8
 before trusting it.
+
+### Scripting the board
+
+`"C:\Program Files\KiCad\10.0\bin\python.exe"` — KiCad's bundled interpreter, the only one with `pcbnew`.
+Also has numpy and PIL; **no scipy**.
+
+`kicad-cli pcb drc --format json -o out.json "…kicad_pcb"` — run after *every* save. The Python API
+exposes no DRC engine and no PNS router, so any hand-rolled geometry check is an approximation; this is
+the only real judge. Twelve shorts and twelve co-located holes reached a saved board before this became
+the habit.
+
+Use the real APIs instead of inferring geometry: `GetConnectedItems` for "is this pad actually joined",
+`FillIsolatedIslandsMap` for pour islands, `GetDesignSettings()` for clearances.
+
+KiCad 10 landmines: `GetPos0` → `GetFPRelativePosition`; `ISLAND_REMOVAL_MODE_REMOVE` → `..._ALWAYS`; and
+**`PCB_VIA.GetWidth()` with no layer argument opens a native assert dialog that hangs an unattended run**
+— always pass a layer, and guard `GetTracks()` loops with `isinstance(t, pcbnew.PCB_VIA)`.
+
+### Routing and ordering
+
+Freerouting 2.3.0, driven headless — these three flags are not optional:
+
+```bash
+--gui.enabled=false                  # the ConductionArea NPE on boards with pours is in the PAINT path
+--router.optimizer.enabled=false     # no best-seen board; the optimizer overwrites a better result
+--router.layers.preferred_direction_horizontal=true,false   # top horizontal / bottom vertical
+```
+
+`router.via_costs` is not a settings field (via costs live in the DSN's `(autoroute_settings …)` block).
+Do not re-run the router on an already-routed DSN to "finish" it — KiCad tags wires `(type route)`, which
+Freerouting reads as rip-uppable, and it destroys the routing. Freerouting also knows nothing of
+`.kicad_dru` custom rules; only net-class width and clearance survive the DSN export.
+
+JLCEDA Pro: import needs schematic **and** PCB zipped together, and the import **drops the netlist**
+(`Nets (1) → None`), so Pro's DRC is meaningless on it — KiCad stays the source of truth.
+
+JLCPCB quote gotcha: the board's via-in-pad thermal vias make Pro pre-select *Via Covering = Epoxy Filled
+& Capped* (+$49.64, and it forces a +$3.30 plating method). Setting **Tented** + **Not Specified** gives
+$2.00 for 5 pcs. Shipping dominates: DHL $28.57 vs Global Standard Direct Line $3.12.
 
 ## Gotchas
 
