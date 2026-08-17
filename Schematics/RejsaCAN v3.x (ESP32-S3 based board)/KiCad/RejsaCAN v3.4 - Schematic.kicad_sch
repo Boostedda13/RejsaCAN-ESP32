@@ -23421,7 +23421,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "LMR14006XDDCR"
+		(property "Value" "LMR14010ADDCR"
 			(at 94.107 155.3591 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23488,7 +23488,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C478074"
+		(property "Supplier Part" ""
 			(at 102.87 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -28497,7 +28497,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "10uH"
+		(property "Value" "15uH"
 			(at 135.8646 169.1767 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28564,7 +28564,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C254862"
+		(property "Supplier Part" ""
 			(at 137.16 172.72 0)
 			(hide yes)
 			(show_name no)
@@ -31089,7 +31089,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "CPC1018N"
+		(property "Value" "GAQY212GS"
 			(at 225.831 31.8389 0)
 			(hide yes)
 			(show_name no)
@@ -31324,7 +31324,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "500"
+		(property "Value" "390"
 			(at 211.861 34.6583 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -31391,7 +31391,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C25117"
+		(property "Supplier Part" ""
 			(at 213.36 38.1 0)
 			(hide yes)
 			(show_name no)
