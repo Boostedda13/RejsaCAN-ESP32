@@ -35384,4 +35384,226 @@
 			)
 		)
 	)
+	(global_label "VBAT_IN"
+		(shape input)
+		(at 260.35 109.22 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "df20e4f4-286b-dfc9-ffc5-fa7864808bd6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 260.35 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "HDR-M-2.54_1x4_1")
+		(at 265.43 130 0)
+		(unit 0)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "62770da5-459f-5f80-6985-65a3318392e8")
+		(property "Reference" "J3"
+			(at 269.24 124.069 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Value" "JST-XH 4P LTE"
+			(at 262.661 121.199 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+			(at 265.43 130 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 265.43 130 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 265.43 130 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" ""
+			(at 265.43 130 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 265.43 130 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b1aede4d-278d-18e9-d131-cead9e7272ff")
+		)
+		(pin "2"
+			(uuid "f3bdae4c-cfe9-8db8-55b0-bec4abfe6de1")
+		)
+		(pin "3"
+			(uuid "e3b3de70-9836-f4e2-0f2a-b2e167468855")
+		)
+		(pin "4"
+			(uuid "435a5520-9471-0e51-9cb7-134a43d36a40")
+		)
+		(instances
+			(project "RejsaCAN v3.4 - Schematic"
+				(path "/16c2f03a-5652-4050-b62b-75ebc6e5d249"
+					(reference "J3")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(global_label "VBAT_IN"
+		(shape input)
+		(at 260.35 126.19 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "35cd8abe-9c0c-7f4a-6d12-3ba256d821e7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 260.35 126.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 260.35 128.73 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3b892422-19be-2a7a-cca3-c1f6b5b43f31")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 260.35 128.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "USB_D-"
+		(shape input)
+		(at 260.35 131.27 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7919acf8-b455-bd9f-86bc-613ba6fb0618")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 260.35 131.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "USB_D+"
+		(shape input)
+		(at 260.35 133.81 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f5090573-15d3-d344-8886-2fb8d64e18e6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 260.35 133.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
 )
