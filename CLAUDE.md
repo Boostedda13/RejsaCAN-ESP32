@@ -90,21 +90,42 @@ art and no package mappings.
 ### KiCad project
 
 `Schematics/RejsaCAN v3.x (ESP32-S3 based board)/KiCad/` holds a native KiCad 10 project derived from the
-EasyEDA JSON, with footprints assigned and a PCB generated from the netlist. The board is
-**31.496 × 49.530 mm** with a 18.034 × 5.969 mm notch between the top tabs, and carries four 2.59 mm NPTH
-mounting holes — outline and holes both traced from the fabricated board's `Gerber.zip`/`DRL`, not drawn
-by hand. Component placement reproduces the fabricated board (recovered by matching footprints against
-the pad cloud in the mask-layer Gerbers); `SD-CARD1` and `JUMPER1` are on the bottom side, as on the real
-board. The board is **routed**: 555 tracks, 116 vias, GND pours both layers, DRC clean of every
-electrical class. 16 connections stay open by design — 14 GND pads reaching only a pour island, one VCC
-link spanning top-to-bottom (needs a via, not a track), one 3V3 path in the congested power corner.
-Finish those in the GUI's interactive router, which can shove existing traces; the Python API cannot.
+EasyEDA JSON. It originally reproduced the fabricated v3.4 board: **31.496 × 49.530 mm**, 2 layers, fully
+routed (555 tracks, 116 vias, GND pours both sides), outline and the four 2.59 mm NPTH holes traced from
+the fabricated `Gerber.zip`/`DRL`, placement recovered by matching footprints against the pad cloud in
+the mask-layer Gerbers. `SD-CARD1` and `JUMPER1` are on the bottom side, as on the real board.
+
+**That state is now history — see branch `v3.5-microfit-switchable-termination`.** The board there is
+**58.1 × 49.63 mm, 4 copper layers** (In1 `GND_plane`, In2 `PWR_plane`), all routing stripped, and
+**not re-routed**. What changed:
+
+- `POWER1` + `CAN1` → **`J1`**, a Molex Micro-Fit 3.0 `43045-0400` 2×2 right-angle carrying 12 V / GND /
+  CAN_H / CAN_L. Its pins 1–2 land on the pre-existing 12 V and GND wires, so the D6/F1 protection chain
+  is untouched.
+- `TERMINATION1`'s cuttable link → **`U6`**, a photorelay in the CAN_H leg, gated by `TERM_EN` on GPIO16
+  with `R21` 10 k pulling it off at reset. `CAN_H → U6 → TERM_SW → R2 120R → CAN_L`.
+- **`U7` LG290P03** quad-band RTK GNSS, plus `J2` u.FL and the Quectel Fig. 17 bias tee
+  (`R23` 10R, `L2` 68 nH, `C29`/`C31`, `C30` DC block, `D13` TVS). UART on GPIO43/44, 1PPS→GPIO6,
+  RESET→GPIO7, RTK_STAT→`GPS1` LED and GPIO15.
+- `U4` **LMR14006 → LMR14010A** and `L1` 10 → 15 µH. Peak load with the GNSS is 748 mA against the old
+  600 mA part. It also fixes a latent bug: LMR14006**X** switches at 2.1 MHz with a 95 ns min on-time,
+  so it can only hold 3.3 V up to **Vin ≈ 16.5 V** on a board rated 5–24 V.
 
 Design rules live in `.kicad_pro` (constraints + net classes) and `.kicad_dru` (three custom rules).
 They hold JLCPCB's economical tier — min trace 5.9 mil, min drill 0.3 mm, both confirmed against a live
 quote. Net classes `Battery`/`Power`/`GND`/`CAN`/`USB`/`Battery_Sense` carry the automotive intent.
 `Battery` spacing is 0.35 mm, not the 0.6 mm IPC-2221 wants at 31–50 V: 0.6 mm was tried and leaves 13
-nets unroutable on two layers. Raise it on the 4-layer respin.
+nets unroutable on two layers. **Now that the board is 4-layer, raise it** — that was the whole reason
+the respin was wanted. Also note `Net-(D6-A)` and `Net-(D6-K)`, the pre-fuse input segments, match no
+netclass pattern and so route at Default 0.2 mm; add them to `Battery`.
+
+Two open problems on that branch before it can be routed:
+
+- **`U1` ↔ `U7` courtyards overlap 4.04 × 18.51 mm.** That is the ESP32-S3-WROOM-1 antenna keep-out
+  intersecting the GNSS module; the board is not wide enough to clear it and still fit the u.FL. WiFi at
+  2.4 GHz beside an RTK receiver at 1.5 GHz needs a real decision, not a nudge.
+- **Quectel forbids feeding this module from a switching converter** (wants < 50 mV ripple) and the only
+  rail here is the buck. `FB1` is a ferrite pi filter — a compromise, not compliance. An LDO is correct.
 
 Things to know before editing it:
 
@@ -184,7 +205,23 @@ JLCEDA Pro: import needs schematic **and** PCB zipped together, and the import *
 
 JLCPCB quote gotcha: the board's via-in-pad thermal vias make Pro pre-select *Via Covering = Epoxy Filled
 & Capped* (+$49.64, and it forces a +$3.30 plating method). Setting **Tented** + **Not Specified** gives
-$2.00 for 5 pcs. Shipping dominates: DHL $28.57 vs Global Standard Direct Line $3.12.
+$2.00 for 5 pcs. Keep Delivery Format on **Single PCB**; "Panel by Customer" forfeits the promo tier and
+adds a $4.00 engineering fee.
+
+**There is a 50 × 50 mm tier boundary for 4-layer**, and it is worth real money: 4-layer ≤ 50 × 50 mm is
+**$2.00/5 pcs — the same as 2-layer** — while ≤ 100 × 100 mm jumps to **$7.00**. The v3.5 board is
+58.1 mm wide and so sits in the $7.00 tier. That is a $5 delta against a ~$400 module order, so do not
+shrink the layout to chase it; noted only so the boundary is not a surprise.
+
+Shipping dominates and the older figures in this file were wrong: **the $3.12 Global Standard Direct Line
+option is no longer available to US individual customers** — they must ship DDP, which exists only on
+DHL/FedEx/UPS express, quoting **~$28.57** at 0.17 kg. A **55 % tariff** is also pre-collected on FR-4
+PCBs (from 17 March 2026, non-refundable, no de-minimis relief). Landed total lands near $32–40 either
+way, so shipping is ~72 % of the cost and the layer count barely registers.
+
+Sourcing landmine: **the Quectel LG290P03AAMD is not carried by LCSC at all.** DigiKey has it at ~$71–81
+each in small quantities against 35 pieces of stock and a **14-week factory lead time**, which makes the
+module ~95 % of the BOM and the real supply risk. Prove the design on one before buying five.
 
 ## Gotchas
 
