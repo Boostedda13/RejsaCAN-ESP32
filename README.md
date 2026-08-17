@@ -93,6 +93,28 @@ The ESP32-S3 is a very nice and capable chip that supports a mind boggling range
 
 You can hook the board up straight to the car's OBD2 port or attach it directly to any CAN bus. You just need to connect the four wires. 12V power, ground, CAN high and low. There is of course a bus termination resistor on the board, it can be disabled if not needed by cutting a pcb trace and optionally mounting a pin header and jumper.
 
+# Supply requirements (v3.5)
+
+**Feed this board from a fused accessory circuit downstream of the vehicle's own
+load-dump suppression. Do not hard-wire it upstream of a battery master / kill switch.**
+
+That is not boilerplate, it is the condition the front end is designed to. The board is
+rated **5-24 V** with a 33 V DC ceiling, which covers a 12 V system running at 14 V,
+a 24 V jump start for 60 s, regulator failure at 18 V for 60 min, reverse polarity, and
+ISO 7637-2 pulses 1, 2a, 3a and 3b. The clamp is a 33 V bidirectional TVS at the
+connector, so a *suppressed* load dump (35 V for up to 400 ms, which is what a modern
+alternator produces) is survived on voltage rating alone.
+
+An **unsuppressed** load dump is a different event: 79-101 V for 40-400 ms, carrying
+20-52 J. Opening a battery master switch with the engine running produces exactly that.
+No discrete TVS of any package size absorbs it -- a 3 kW SMC part is worth about 3 J.
+Surviving that case needs a series surge stopper (LTC4364 class) and roughly 150 mm2 of
+board this design does not have. Since RejsaCAN is aimed at motorsport, where kill
+switches are common, this restriction is the trade that was made deliberately.
+
+24 V *systems* are out of scope. Their suppressed load dump is 58 V, which no clamp
+below 58 V standoff survives, and a 60 V standoff part clamps near 97 V.
+
 # Functionality
 
 The idea was to make an as small as possible CAN + ESP32 board with as many cool and useful "good to have" functions as possible included. You know as well as I do that when tinkering around you suddenly get a new idea and need x or y :-D 

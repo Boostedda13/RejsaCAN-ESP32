@@ -18838,16 +18838,7 @@
 		)
 		(uuid "b4b209d2-6763-4ae8-bbde-9868c732135f")
 	)
-	(wire
-		(pts
-			(xy 200.66 121.92) (xy 200.66 119.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b7543e91-d579-40f7-a598-8f7e9a7101f4")
-	)
+
 	(wire
 		(pts
 			(xy 190.5 40.64) (xy 194.31 40.64)
@@ -22204,7 +22195,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "10K"
+		(property "Value" "22.1k"
 			(at 164.084 189.3951 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22271,7 +22262,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C25744"
+		(property "Supplier Part" ""
 			(at 162.56 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -23361,7 +23352,7 @@
 				(justify right top)
 			)
 		)
-		(property "Value" "22uF"
+		(property "Value" "2.2uF/100V"
 			(at 83.9978 170.5737 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23373,7 +23364,7 @@
 				(justify right top)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric"
 			(at 85.09 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -23428,7 +23419,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C602037"
+		(property "Supplier Part" ""
 			(at 85.09 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -23615,7 +23606,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "LMR14010ADDCR"
+		(property "Value" "LMR51610XDBVR"
 			(at 94.107 155.3591 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24755,7 +24746,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "MF-MSMF110/16-2"
+		(property "Value" "1206TD-2A"
 			(at 203.2 105.8291 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24767,7 +24758,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "RejsaCAN:Fuse_1812_RejsaCAN_3.706mm"
+		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
 			(at 218.44 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -24822,7 +24813,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C210834"
+		(property "Supplier Part" ""
 			(at 218.44 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -24961,7 +24952,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "34.8k"
+		(property "Value" "69.8k"
 			(at 164.084 179.2097 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25028,7 +25019,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C25779"
+		(property "Supplier Part" ""
 			(at 162.56 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -25168,7 +25159,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "100nF/100V"
 			(at 213.36 116.9797 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25180,7 +25171,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 210.82 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -25235,7 +25226,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C307331"
+		(property "Supplier Part" ""
 			(at 210.82 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -25454,7 +25445,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "DSS34"
+		(property "Value" "SS310"
 			(at 229.87 121.0691 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25466,7 +25457,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-123"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 233.68 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -25521,7 +25512,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C84632"
+		(property "Supplier Part" ""
 			(at 233.68 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -25639,7 +25630,7 @@
 	)
 	(symbol
 		(lib_id "SMF30A_C366558")
-		(at 200.66 114.3 0)
+		(at 243.84 149.86 0)
 		(unit 0)
 		(body_style 0)
 		(exclude_from_sim no)
@@ -25649,7 +25640,7 @@
 		(dnp no)
 		(uuid "8833b8ec-317f-4143-9616-c465d5d333ae")
 		(property "Reference" "D4"
-			(at 194.0814 113.4237 0)
+			(at 237.261 148.984 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -25660,8 +25651,8 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "SMF30A"
-			(at 188.4172 115.9637 0)
+		(property "Value" "SMBJ33CA"
+			(at 231.597 151.524 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -25672,8 +25663,8 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-123"
-			(at 200.66 114.3 0)
+		(property "Footprint" "Diode_SMD:D_SMB"
+			(at 243.84 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25684,7 +25675,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 200.66 114.3 0)
+			(at 243.84 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25695,7 +25686,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 200.66 114.3 0)
+			(at 243.84 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25706,7 +25697,7 @@
 			)
 		)
 		(property "Manufacturer Part" "SMF30A"
-			(at 200.66 114.3 0)
+			(at 243.84 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25717,7 +25708,7 @@
 			)
 		)
 		(property "Manufacturer" "DOWO"
-			(at 200.66 114.3 0)
+			(at 243.84 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25727,8 +25718,8 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C366558"
-			(at 200.66 114.3 0)
+		(property "Supplier Part" ""
+			(at 243.84 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25739,7 +25730,7 @@
 			)
 		)
 		(property "Supplier" "LCSC"
-			(at 200.66 114.3 0)
+			(at 243.84 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -29011,7 +29002,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "d2aa89ff-2071-42a7-92eb-6bf9bc789bcc")
 		(property "Reference" "D5"
 			(at 123.19 183.2737 0)
@@ -29025,7 +29016,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "SS34"
+		(property "Value" "SS34 (DNP)"
 			(at 123.19 185.5851 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -30155,7 +30146,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "DSS34"
+		(property "Value" "SS310"
 			(at 229.87 104.5591 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -30167,7 +30158,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-123"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 233.68 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -30222,7 +30213,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C84632"
+		(property "Supplier Part" ""
 			(at 233.68 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -35518,7 +35509,7 @@
 			)
 		)
 	)
-	(global_label "VBAT_IN"
+	(global_label "J3_PWR"
 		(shape input)
 		(at 260.35 126.19 180)
 		(effects
@@ -35605,5 +35596,176 @@
 				)
 			)
 		)
+	)
+	(global_label "VBAT_IN"
+		(shape input)
+		(at 243.84 144.78 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f0b6941e-1186-309b-9321-9fce72c25d05")
+	)
+	(global_label "GND"
+		(shape input)
+		(at 243.84 154.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1517c293-c371-421f-eba8-49f109924fb3")
+	)
+	(symbol
+		(lib_id "MF-MSMF110/16-2")
+		(at 218.44 149.22 0)
+		(unit 0)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "687c9f0d-2320-2409-c5b0-83b78b994b03")
+		(property "Reference" "F3"
+			(at 217.068 143.441 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Value" "1206TD-4A"
+			(at 203.2 145.829 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.6891 1.6891)
+				)
+				(justify left top)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
+			(at 218.44 149.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 218.44 149.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 218.44 149.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "MF-MSMF110/16-2"
+			(at 218.44 149.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "BOURNS"
+			(at 218.44 149.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" ""
+			(at 218.44 149.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 218.44 149.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f954481b-464f-2275-3cac-75418ec9bf44")
+		)
+		(pin "2"
+			(uuid "846a9bac-dea1-fad2-5df0-31d6259d26f6")
+		)
+		(instances
+			(project "RejsaCAN v3.4 - Schematic"
+				(path "/16c2f03a-5652-4050-b62b-75ebc6e5d249"
+					(reference "F3")
+					(unit 0)
+				)
+			)
+		)
+	)
+	(global_label "VBAT_IN"
+		(shape input)
+		(at 213.36 149.22 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "15c1a19e-5d14-d69d-8043-2f9b9b05029b")
+	)
+	(global_label "J3_PWR"
+		(shape input)
+		(at 223.52 149.22 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1c5e43a9-1f9d-f4c1-4f80-612a389e1355")
 	)
 )
