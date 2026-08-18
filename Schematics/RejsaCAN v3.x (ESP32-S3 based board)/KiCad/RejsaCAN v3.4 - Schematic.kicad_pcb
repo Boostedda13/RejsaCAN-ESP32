@@ -12297,7 +12297,7 @@
 		(descr "SMD tactile switch, G-Switch GT-TC029B-H025-L1N (LCSC C843669), 2 terminals. Land pattern from the vendor library via JLCEDA Pro.")
 		(tags "switch tactile SMD GT-TC029B C843669")
 		(property "Reference" "RESET1"
-			(at 6.108096 -1.2 0)
+			(at -0.025 -1.794 90)
 			(layer "F.SilkS")
 			(uuid "5aacbfbc-f934-4dcc-9546-92114a74bbb1")
 			(effects
@@ -13450,7 +13450,7 @@
 		(descr "2.4 GHz Wi-Fi and Bluetooth module  https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf")
 		(tags "2.4 GHz Wi-Fi and Bluetooth module")
 		(property "Reference" "U1"
-			(at 25.04325 -5.35 0)
+			(at 0.002 7.5338 0)
 			(unlocked yes)
 			(layer "F.SilkS")
 			(uuid "d562e6d4-31c6-4e64-914e-352fe72282c1")
@@ -15457,7 +15457,7 @@
 		(descr "SOT, 3 Pin (JEDEC TO-236 Var AB https://www.jedec.org/document_search?search_api_views_fulltext=TO-236)")
 		(tags "SOT TO_SOT_SMD")
 		(property "Reference" "Q1"
-			(at 0 -2.4 180)
+			(at 0 -1.95 180)
 			(layer "F.SilkS")
 			(uuid "3a828573-057a-4a17-90fb-0f1de852d3a8")
 			(effects
@@ -15890,7 +15890,7 @@
 		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "capacitor")
 		(property "Reference" "C3"
-			(at 0 -1.16 90)
+			(at 0.0015 -0.9259 90)
 			(layer "F.SilkS")
 			(uuid "0fbe6e1b-4332-4320-ad68-7e0764d183da")
 			(effects
