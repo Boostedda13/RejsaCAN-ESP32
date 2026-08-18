@@ -95,11 +95,18 @@ routed (555 tracks, 116 vias, GND pours both sides), outline and the four 2.59 m
 the fabricated `Gerber.zip`/`DRL`, placement recovered by matching footprints against the pad cloud in
 the mask-layer Gerbers. `SD-CARD1` and `JUMPER1` are on the bottom side, as on the real board.
 
-**That state is now history — see branch `v3.5-microfit-switchable-termination`.** The board there is
-**L-shaped**: a main body plus a bottom-right bump-out for the GNSS, 63.1 × 49.63 mm bounding but only
-2970 mm² of copper. **4 copper layers** (In1 `GND_plane` held solid as the RF reference, In2 `PWR_plane`).
-It **is routed** — 946 tracks, 80 vias, GND poured on three layers, **DRC clean of every electrical and
-fabrication class**, with 4 connections still open in the power section. What changed:
+**That state is now history — `main` carries the v3.5 board** (branch `v3.5-microfit-switchable-termination`
+was merged; the project file names still say v3.4). The board is **L-shaped**: a main body plus a
+bottom-right bump-out for the GNSS, 63.1 × 49.63 mm bounding but only 2970 mm² of copper, with a notch
+in the top edge under the WROOM antenna (the two "ears" carry `H1`/`H2`). **4 copper layers** (In1
+`GND_plane` held solid as the RF reference, In2 `PWR_plane`). **It is finished**: 0 unconnected, DRC
+**0 errors** (`kicad-cli`, all severities), ~1030 tracks, 187 vias of which 98 are GND stitching, GND
+poured on three layers. The remaining DRC output is warnings only: ~150 silkscreen (refdes text in the
+dense power corner), 3 silk-edge (the module outline on the notch edge), and 23 courtyard-class items
+that are **as-fabricated v3.4 geometry** — every one of them is also reported on the recovered v3.4
+layout (which has 43), so those three checks were set to *warning* in the `.kicad_pro`, in the same
+spirit as the `.kicad_dru` "as-fabricated" rules. Fabrication output for it lives in `KiCad/fabrication/`
+(`RejsaCAN_v3.5_gerbers.zip`, renders, STEP; regenerable, gitignored). What changed against v3.4:
 
 - `POWER1` + `CAN1` → **`J1`**, a Molex Micro-Fit 3.0 `43045-0400` 2×2 right-angle carrying 12 V / GND /
   CAN_H / CAN_L. Its pins 1–2 land on the pre-existing 12 V and GND wires, so the D6/F1 protection chain
@@ -117,6 +124,13 @@ fabrication class**, with 4 connections still open in the power section. What ch
   harness into the USB port, which would put 12 V and CAN_H onto `USB_D±` and GPIO19/20.
 - **The whole front end was re-rated** — see below. `U4` is now an **LMR51610X** (65 V), not the
   LMR14010A this file used to name.
+- **`SPI1` (MTDO/MTCK/MTDI) moved out from under the WROOM** to a second header column beside `GPIO1`
+  (X 142.5). The recovered v3.4 placement had dropped it onto three of upstream's *rear-access* pads
+  under the module; upstream's README says those pads carry GPIO6/7/15/16, MTMS, PROG, JTAG_ENABLE,
+  TXD0, RXD0 (PCB-only pads, no symbols, so they never entered this netlist) and that MISO/CLK/MOSI sit
+  in the header row. A header nobody can populate was a defect. Also: `D7` is rotated 180° (cathode
+  toward the D6-K via), `C27`/`C32` sit rotated below U7's edge instead of physically under it, and
+  U7's courtyard is the real 12.2 × 16 mm module (+0.25), not the 18 × 22 mm box it had.
 
 **Front end: rated 5–24 V, 33 V DC ceiling.** The chain is forced by one number — a 12 V-system
 *suppressed* load dump is 35 V for 40–400 ms, so the clamp must not conduct at 35 V → 33 V standoff →
@@ -182,12 +196,14 @@ body* and must stay F.Cu only — extending it inward deletes the ground referen
 is the opposite of what an RF jack wants. Whenever the layer count changes, re-check every rule area's
 layer set against what it is actually protecting.
 
-**Ground stitching is unsolved and should be done in the GUI.** The board has one GND via; the audit
-measured the RF coplanar ground 8.94 mm from any plane crossing and U7's 59 ground pads 11–17 mm.
-Scripted attempts all failed: a 3.0 mm grid of 0.6 mm vias hit the RF target (2.29 mm) but added 31
-errors and cut F.Cu from 4 pour islands to 9; targeted fences and a hole-aware 3.5 mm grid were pruned
-to nothing because the candidate sites sit in pour voids. Place these interactively where the fill is
-visible rather than scripting them.
+**Ground stitching is done** — 98 vias (0.6/0.3): a fence both sides of the RF trace (within ~1 mm),
+a ring around U7's ground pads, and a 4 mm grid — placed by `KiCad/tools/stitch.py` with zero DRC
+fallout. The earlier scripted attempts failed because their candidate sites were tested against a
+hand-rolled clearance model; this one reuses the router's obstacle mask (every non-GND item inflated by
+via radius + the larger of the two net-class clearances, plus hole-to-hole and the edge band) and
+requires each site to be inside an outer-layer pour. Add all, let DRC prune, iterate — none needed
+pruning. If more are wanted, run it again with a smaller `--grid`; it skips sites too close to
+existing vias.
 
 Both of the problems this file used to list as blocking are now closed: the **bump-out** moved the GNSS
 clear of the WROOM antenna keep-out (and to the *bottom* right on purpose — the WROOM's antenna is at the
@@ -201,12 +217,27 @@ divider and auto-shutdown chain — while `U4`/`L1`/`D5` stayed put, because the
 and lengthening the SW node is a regression. Split by circuit type, not geography. The router then
 finished in **131 s against 310–660 s** on every previous attempt.
 
-Still open: 4 connections (`C2`/`R1` 3V3, `U3`/`Q1`, `U4.5`/`C13` VCC, `D7`). Finish them in the GUI's
-interactive router, which can shove existing traces — the Python API cannot, and three scripted attempts
-at hand-placing that copper each made it worse.
+**The last four connections were closed by script after all** — `KiCad/tools/miniroute.py`, an
+obstacle-aware grid router (per-layer clearance-inflated raster, Dijkstra over F/In2/B with via
+transitions, DRC as the gate; see `tools/README.md`). What made it work where hand-placed copper had
+not: the mask uses the *real* geometry (`GetEffectivePolygon`, both nets' class clearances, holes, edge
+band, keep-outs) with an extra cell of margin, and every route was accepted only when `kicad-cli` DRC
+did not rise. Two of the four still needed *placement* changes first, because U4.5 and D7.1 were sealed
+on every layer: `D7` was rotated 180° so its cathode faces the free F.Cu toward the existing D6-K via,
+and for `VCC → U4.5` the EN (`Net-(D2-K)`) and `FORCE_ON` spaghetti plus the 3V3 F.Cu feed from `L1.2`
+were stripped, the power routed first (VCC F.Cu-only from the pad to `C13.2` — 0.4 mm through the
+0.6 mm gap between pads 4 and 6, which is exactly 0.35 mm from each; `L1.2 → C8.2` relinked via In2),
+then EN and FORCE_ON re-routed around them in six passes. Order matters: power first, signals after.
+
+Two placement fixes were needed for reasons DRC alone would not have shown: `C27`/`C32` were 0.15 mm
+*under* U7's body edge (courtyard said 18 × 22 mm for a 12.2 × 16 mm module, so nothing complained),
+and `SPI1` was under the WROOM (see above).
 
 Things to know before editing it:
 
+- `KiCad/tools/` holds the three scripts that finished the board (`miniroute.py`, `stitch.py`,
+  `drcgate.py`) with their own README; `KiCad/fabrication/README.md` has the exact `kicad-cli` lines
+  for the 4-layer Gerber set, renders and STEP.
 - The EasyEDA importer is **read-only**. It loads the `.json` but `Ctrl+S` fails with "File format is not
   supported"; a native `.kicad_sch` only exists because the project was re-saved via the project
   manager's *Save As*.
@@ -305,9 +336,17 @@ Do not re-run the router on an already-routed DSN to "finish" it — KiCad tags 
 Freerouting reads as rip-uppable, and it destroys the routing. Freerouting also knows nothing of
 `.kicad_dru` custom rules; only net-class width and clearance survive the DSN export.
 
-**Rewriting those wires to `(type protect)` does not rescue that idea** — tried, and it came back with 26
-unrouted having *broken* nets that were already fine, including the hand-routed antenna and both USB-C CC
-pairs. Re-route from a stripped board instead.
+**Rewriting those wires to `(type protect)` does not rescue that idea** — tried twice. The first time it
+came back with 26 unrouted having *broken* nets that were already fine, including the hand-routed
+antenna and both USB-C CC pairs. The second time (2.3.0, everything protected except the four open
+nets, fanout off) it loaded the board as **79 unrouted / 20 violations** and stalled there for
+13 passes: Freerouting does not treat protected wires as connecting their pins. Re-route from a
+stripped board, or use `KiCad/tools/miniroute.py` for the last few connections. Three more 2.3.0
+facts from that attempt: an injected `(autoroute_settings …)` block — with or without `layer_rule`s —
+**breaks the DSN parse** ("board has no SMD pins", 2 unrouted, 0-byte SES), so via costs cannot be
+set that way; `--router.fanout.enabled=false` is a real setting and matters, because with fanout on
+the router adds stubs and vias to every SMD pin it thinks is unconnected; and it auto-detects a
+`GND_plane` layer as a power plane from the pour, so the `(type power)` edit is belt-and-braces.
 
 **Hold the inner ground layer as a plane by editing the DSN.** KiCad exports every copper layer as
 `(type signal)`, so the router will happily lay 560 mm of traces across In1 — the reference the RF trace
@@ -344,8 +383,14 @@ adds a $4.00 engineering fee.
 
 **There is a 50 × 50 mm tier boundary for 4-layer**, and it is worth real money: 4-layer ≤ 50 × 50 mm is
 **$2.00/5 pcs — the same as 2-layer** — while ≤ 100 × 100 mm jumps to **$7.00**. The v3.5 board is
-58.1 mm wide and so sits in the $7.00 tier. That is a $5 delta against a ~$400 module order, so do not
+63.1 mm wide and so sits in the $7.00 tier. That is a $5 delta against a ~$400 module order, so do not
 shrink the layout to chase it; noted only so the boundary is not a surprise.
+
+**Quote for the finished board (18 Aug 2026, cart.jlcpcb.com, parameters entered by hand: 4 layers,
+63.1 × 49.63 mm, 5 pcs, 1.6 mm FR4 TG135, HASL, green, 1 oz/0.5 oz, single PCB, "Plugged" via cover
+at $0.00): PCB $7.00, DHL Express DDP $28.57 (0.18 kg, 2–4 days) → $35.57 before the tariff line
+below.** Typing into the dimension fields on that page *appends* to the default "10" (→ "1063.1", a
+$97 quote with a $25 engineering fee); set the field value directly or select-all first.
 
 Shipping dominates and the older figures in this file were wrong: **the $3.12 Global Standard Direct Line
 option is no longer available to US individual customers** — they must ship DDP, which exists only on

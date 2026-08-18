@@ -16,6 +16,8 @@ fp-info-cache
 # generated manufacturing output (see KiCad/fabrication/README.md)
 **/KiCad/fabrication/*
 !**/KiCad/fabrication/README.md
+# scratch output of the routing/stitching tools (see KiCad/tools/README.md)
+**/KiCad/tools/out/
 
 # Python bytecode (converter/)
 __pycache__/
