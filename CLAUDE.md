@@ -392,6 +392,21 @@ at $0.00): PCB $7.00, DHL Express DDP $28.57 (0.18 kg, 2–4 days) → $35.57 be
 below.** Typing into the dimension fields on that page *appends* to the default "10" (→ "1063.1", a
 $97 quote with a $25 engineering fee); set the field value directly or select-all first.
 
+**Assembly estimate (18 Aug 2026, from JLCPCB's published fee structure + LCSC prices, not a live PCBA
+quote — the quote page's assembly panel needs a BOM/CPL upload and login):** JLC fees are setup ~$8
+(Economic) or +$25/+$50 (Standard, one/two-sided), stencil $1.50, $0.0017 per SMT joint, $1.50 per
+*extended* part type (was $3 before Dec 2025), THT $0.0135/pin + $3.50. This board: 81 top parts /
+308 SMT joints (D5, R19 DNP), 2 bottom parts (SD-CARD1, JUMPER1), 23 THT pins (J1, J3, USB-C shell,
+headers), ~22 extended part types → **~$45 (Economic, top SMT only) or ~$95 (Standard, both sides +
+THT) for 5 boards**. LCSC parts ≈ **$12/board** excluding the GNSS module (ESP32-S3-WROOM-1-N16R8
+$5.16, SN65HVD230 $0.77, LMR51610X $0.68 C20539658, AQY212GS $1.18 C719745, tantalum $0.53, Micro-Fit
+$0.45 C122413, the rest pennies). **The LG290P03 dominates: ~$71–81 each at DigiKey**, not at LCSC —
+either consign it or use JLC Global Sourcing (modules can carry 3–30 % duty). Two BOM gaps to close
+before ordering: **SD-CARD1 (MR01A-01211, C479742) is out of stock at LCSC** — pick a substitute
+push-push socket and check its footprint; and L1's 15 µH SLP6028S variant is not confirmed stocked
+(the 10 µH C254862 is). All-in for 5 assembled boards ≈ $490–590 + shipping/tariff → **~$100–120
+per board, of which ~$75–85 is the GNSS module.**
+
 Shipping dominates and the older figures in this file were wrong: **the $3.12 Global Standard Direct Line
 option is no longer available to US individual customers** — they must ship DDP, which exists only on
 DHL/FedEx/UPS express, quoting **~$28.57** at 0.17 kg. A **55 % tariff** is also pre-collected on FR-4
