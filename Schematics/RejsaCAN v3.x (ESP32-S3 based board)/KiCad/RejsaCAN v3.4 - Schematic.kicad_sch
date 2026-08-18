@@ -25445,7 +25445,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "SS310"
+		(property "Value" "SS110"
 			(at 229.87 121.0691 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25457,7 +25457,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SOD-123F"
 			(at 233.68 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -25651,7 +25651,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "SMBJ33CA"
+		(property "Value" "SMAJ33CA"
 			(at 231.597 151.524 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25663,7 +25663,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMB"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 243.84 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -30146,7 +30146,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "SS310"
+		(property "Value" "SS110"
 			(at 229.87 104.5591 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -30158,7 +30158,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SOD-123F"
 			(at 233.68 109.22 0)
 			(hide yes)
 			(show_name no)
