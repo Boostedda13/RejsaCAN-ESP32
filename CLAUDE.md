@@ -401,11 +401,27 @@ headers), ~22 extended part types → **~$45 (Economic, top SMT only) or ~$95 (S
 THT) for 5 boards**. LCSC parts ≈ **$12/board** excluding the GNSS module (ESP32-S3-WROOM-1-N16R8
 $5.16, SN65HVD230 $0.77, LMR51610X $0.68 C20539658, AQY212GS $1.18 C719745, tantalum $0.53, Micro-Fit
 $0.45 C122413, the rest pennies). **The LG290P03 dominates: ~$71–81 each at DigiKey**, not at LCSC —
-either consign it or use JLC Global Sourcing (modules can carry 3–30 % duty). Two BOM gaps to close
-before ordering: **SD-CARD1 (MR01A-01211, C479742) is out of stock at LCSC** — pick a substitute
-push-push socket and check its footprint; and L1's 15 µH SLP6028S variant is not confirmed stocked
-(the 10 µH C254862 is). All-in for 5 assembled boards ≈ $490–590 + shipping/tariff → **~$100–120
-per board, of which ~$75–85 is the GNSS module.**
+either consign it or use JLC Global Sourcing (modules can carry 3–30 % duty). All-in for 5 assembled
+boards ≈ $490–590 + shipping/tariff → **~$100–120 per board, of which ~$75–85 is the GNSS module.**
+
+**The BOM is JLC-ready as of 18 Aug 2026**: every schematic symbol carries `Manufacturer Part`,
+`Manufacturer` and `Supplier Part` (LCSC C-number) verified against stock that day, and
+`fabrication/bom.csv` exports them. Before that, most of those fields were stale copies from cloned
+symbols (D13 said a Samsung capacitor, F1/F3 the old 1812 PTC, U4 LMR14006, J2 a pin header) — a
+BOM upload would have matched wrong parts, silently. Substitutions made because the specified part
+was unstocked, with the land pattern compared numerically via EasyEDA's footprint API
+(`https://easyeda.com/api/products/<Cnnn>/components?version=6.4.19.5`, reachable from the in-app
+browser, 403 from curl): SD-CARD1 → **SOFNG TF-015 (C113206)**, same TF-015-family land within
+0.1 mm including the two Ø1.0 pegs (XYECONN/SHOU HAN clones put the pegs 0.35 mm further out and would
+not seat); L1 → **SLP6028S100MTT 10 µH (C254862)** — no 15 µH with adequate Isat exists in this land
+at LCSC (SXN 15 µH saturates at 1.0 A; Sunlord's is delisted); L2 → **LQW15AN47NJ00D 47 nH
+(C192855)** — the 68 nH LQW15AN is out of stock and the ferrite-core 68 nH parts have SRF 750–800 MHz,
+i.e. capacitive at L1/L5; U8 → **RT9013-33GB (C47773)**, same SOT-23-5 pinout, AP2112K-3.3 has 5 pcs;
+D6/D7 → **MBR1H100SFT3G (C235757)** because every "SS110F" at LCSC is SMAF, not SOD-123F; D13 →
+**ESD9L5.0ST5G 0.5 pF (C82326)**, SOD-923 terminals sit inside the 0402 land; F1 **0466002.NRHF**
+(C3105), F3 **1206T4A63V** (C354899); C6 **CL32B225KCJSNNE** (C55151); C13 **CL10B104KC8NNNC**
+(C15725). Only U7 (LG290P03AAMD, DigiKey) and three E96 0402 resistors (69.8k/22.1k/390, MPN given,
+let JLC match) lack C-numbers.
 
 Shipping dominates and the older figures in this file were wrong: **the $3.12 Global Standard Direct Line
 option is no longer available to US individual customers** — they must ship DDP, which exists only on
