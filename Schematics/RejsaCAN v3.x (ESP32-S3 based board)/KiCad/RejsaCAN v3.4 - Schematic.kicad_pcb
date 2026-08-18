@@ -3083,7 +3083,7 @@
 				)
 			)
 		)
-		(property "Value" "CPC1018N"
+		(property "Value" "GAQY212GS"
 			(at 0 3 0)
 			(layer "F.Fab")
 			(uuid "a7f71ed5-e80a-4299-8d3f-1109125098f4")
@@ -11371,7 +11371,7 @@
 				)
 			)
 		)
-		(property "Value" "500"
+		(property "Value" "390"
 			(at 0 1.17 0)
 			(layer "F.Fab")
 			(uuid "914558da-8399-471e-b3a7-0570e97ad6bf")
@@ -12096,7 +12096,7 @@
 				)
 			)
 		)
-		(property "Value" "33K"
+		(property "Value" "69.8k"
 			(at 0 1.17 0)
 			(layer "F.Fab")
 			(uuid "72ea5120-08bf-42cd-a576-7ee2a489d35e")
@@ -12852,7 +12852,7 @@
 				)
 			)
 		)
-		(property "Value" "SS34"
+		(property "Value" "SS34 (DNP)"
 			(at 0 2.6 0)
 			(layer "F.Fab")
 			(uuid "e35073d6-208f-45ee-b296-a5f134bd7256")
@@ -19743,7 +19743,7 @@
 				)
 			)
 		)
-		(property "Value" "10K"
+		(property "Value" "22.1k"
 			(at 0 1.17 180)
 			(layer "F.Fab")
 			(uuid "df33bbe0-617b-4d75-9812-3972710bac40")
@@ -20100,7 +20100,7 @@
 				)
 			)
 		)
-		(property "Value" "LMR14006XDDCR"
+		(property "Value" "LMR51610XDBVR"
 			(at 0 2.4 0)
 			(layer "F.Fab")
 			(uuid "2a3b61d4-ca90-4b5c-b1bb-725fb49375b8")
@@ -21147,7 +21147,7 @@
 				)
 			)
 		)
-		(property "Value" "10uH"
+		(property "Value" "15uH"
 			(at 0 2.4 0)
 			(layer "F.Fab")
 			(uuid "ef728085-1d1f-4cd4-a26f-dc2ed4f51afa")
