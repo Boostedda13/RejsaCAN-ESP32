@@ -96,8 +96,10 @@ the fabricated `Gerber.zip`/`DRL`, placement recovered by matching footprints ag
 the mask-layer Gerbers. `SD-CARD1` and `JUMPER1` are on the bottom side, as on the real board.
 
 **That state is now history — see branch `v3.5-microfit-switchable-termination`.** The board there is
-**58.1 × 49.63 mm, 4 copper layers** (In1 `GND_plane`, In2 `PWR_plane`), all routing stripped, and
-**not re-routed**. What changed:
+**L-shaped**: a main body plus a bottom-right bump-out for the GNSS, 63.1 × 49.63 mm bounding but only
+2970 mm² of copper. **4 copper layers** (In1 `GND_plane` held solid as the RF reference, In2 `PWR_plane`).
+It **is routed** — 946 tracks, 80 vias, GND poured on three layers, **DRC clean of every electrical and
+fabrication class**, with 4 connections still open in the power section. What changed:
 
 - `POWER1` + `CAN1` → **`J1`**, a Molex Micro-Fit 3.0 `43045-0400` 2×2 right-angle carrying 12 V / GND /
   CAN_H / CAN_L. Its pins 1–2 land on the pre-existing 12 V and GND wires, so the D6/F1 protection chain
@@ -107,13 +109,48 @@ the mask-layer Gerbers. `SD-CARD1` and `JUMPER1` are on the bottom side, as on t
 - **`U7` LG290P03** quad-band RTK GNSS, plus `J2` u.FL and the Quectel Fig. 17 bias tee
   (`R23` 10R, `L2` 68 nH, `C29`/`C31`, `C30` DC block, `D13` TVS). UART on GPIO43/44, 1PPS→GPIO6,
   RESET→GPIO7, RTK_STAT→`GPS1` LED and GPIO15.
-- `U4` **LMR14006 → LMR14010A** and `L1` 10 → 15 µH. Peak load with the GNSS is 748 mA against the old
-  600 mA part. It also fixes a latent bug: LMR14006**X** switches at 2.1 MHz with a 95 ns min on-time,
-  so it can only hold 3.3 V up to **Vin ≈ 16.5 V** on a board rated 5–24 V.
+- **`U8` AP2112K-3.3 LDO** feeding `GNSS_VCC`. Quectel forbids a switching supply on this module, and a
+  ferrite was only a compromise. It needs headroom to regulate, so `R9`/`R10` lift 3V3 to ~3.43 V — a
+  3.3 V LDO fed from 3.29 V sits in dropout, where PSRR collapses and it filters nothing.
+- **`J3`**, a JST-XH 4-pin carrying raw 12 V / GND / USB_D- / USB_D+ to an LTE module. Deliberately a
+  different connector family from `J1`: two identical 4-circuit Micro-Fits invite plugging the CAN
+  harness into the USB port, which would put 12 V and CAN_H onto `USB_D±` and GPIO19/20.
+- **The whole front end was re-rated** — see below. `U4` is now an **LMR51610X** (65 V), not the
+  LMR14010A this file used to name.
 
-Design rules live in `.kicad_pro` (constraints + net classes) and `.kicad_dru` (three custom rules).
+**Front end: rated 5–24 V, 33 V DC ceiling.** The chain is forced by one number — a 12 V-system
+*suppressed* load dump is 35 V for 40–400 ms, so the clamp must not conduct at 35 V → 33 V standoff →
+clamps at 53.3 V (56 V hot) → the regulator must survive ~56 V. Every part follows from that:
+
+```
+J1.1 ┬─ D4  SMAJ33CA   bidirectional clamp, at the raw node
+     ├─ F3  1206TD-4A  4 A/72 V, fuses the J3 branch (was unfused raw battery)
+     └─ D6  SS110      100 V Schottky ┬─ F1 1206TD-2A ─ VCC ─ U4 LMR51610X
+                          └─ D7 SS110 (USB 5 V)
+```
+
+Three traps recorded so they are not re-hit:
+
+- **`R9`/`R10` are not optional when swapping `U4`.** LMR51610X's reference is **0.800 V**, not the
+  LMR14010A's 0.765 V. Leaving the divider alone yields **3.58 V** against the ESP32-S3's **3.6 V
+  absolute maximum**.
+- **A P-FET is the wrong reverse-block here** even though it beats a Schottky on headroom: its gate sits
+  at ground, so USB with no battery turns it on and back-feeds 5 V onto `J1` and `J3`. `D6` exists to
+  stop exactly that.
+- **5–36 V was investigated and declined.** It implies 24 V-system service, whose suppressed load dump is
+  58 V — unsurvivable below a 58 V standoff, and a 60 V part clamps near 97 V needing a 100 V regulator.
+  The only 100 V candidate will not start below 6 V.
+
+The rating is **conditional on the installation**: fused accessory circuit, downstream of the vehicle's
+own suppression, never upstream of a battery kill switch. An *unsuppressed* load dump is 79–101 V and
+20–52 J; no discrete TVS closes that, only an LTC4364 and ~150 mm² this board does not have. That
+sentence is in the README and the design depends on it.
+
+Design rules live in `.kicad_pro` (constraints + net classes) and `.kicad_dru` (five custom rules).
 They hold JLCPCB's economical tier — min trace 5.9 mil, min drill 0.3 mm, both confirmed against a live
-quote. Net classes `Battery`/`Power`/`GND`/`CAN`/`USB`/`Battery_Sense` carry the automotive intent.
+quote. Net classes `Battery`/`Battery_Out`/`Power`/`GND`/`CAN`/`USB`/`Battery_Sense`/`RF` carry the intent.
+`Battery_Out` is `VBAT_IN` at 0.8 mm — split out from `Battery` because it feeds the LTE module and
+lives in the roomy bump-out, so it can be wide without congesting the `VCC` corner.
 **`Battery` spacing is 0.35 mm and that is correct — do not "fix" it to 0.6 mm.** This file used to say
 IPC-2221 wants 0.6 mm at 31–50 V and to raise it on the 4-layer respin. That was a misreading, and it
 cost two routing attempts before it was caught. Table 6-1 is indexed by **coating**, not by layer:
@@ -152,13 +189,21 @@ errors and cut F.Cu from 4 pour islands to 9; targeted fences and a hole-aware 3
 to nothing because the candidate sites sit in pour voids. Place these interactively where the fill is
 visible rather than scripting them.
 
-Two open problems on that branch before it can be routed:
+Both of the problems this file used to list as blocking are now closed: the **bump-out** moved the GNSS
+clear of the WROOM antenna keep-out (and to the *bottom* right on purpose — the WROOM's antenna is at the
+top edge, so going low roughly doubles the separation for free), and **`U8`** replaced the ferrite
+compromise with a real LDO.
 
-- **`U1` ↔ `U7` courtyards overlap 4.04 × 18.51 mm.** That is the ESP32-S3-WROOM-1 antenna keep-out
-  intersecting the GNSS module; the board is not wide enough to clear it and still fit the u.FL. WiFi at
-  2.4 GHz beside an RTK receiver at 1.5 GHz needs a real decision, not a nudge.
-- **Quectel forbids feeding this module from a switching converter** (wants < 50 mV ripple) and the only
-  rail here is the buck. `FB1` is a ferrite pi filter — a compromise, not compliance. An LDO is correct.
+**The power corner is a placement problem, not a routing one.** 12 parts sat in 108 mm² of inherited
+2-layer-era layout, with 21–35 non-GND items within 3 mm of the stranded pads; 146 candidate via sites
+were tested and *none* were clean. The fix was to move the **low-speed** circuits out — battery-sense
+divider and auto-shutdown chain — while `U4`/`L1`/`D5` stayed put, because they are the switching loop
+and lengthening the SW node is a regression. Split by circuit type, not geography. The router then
+finished in **131 s against 310–660 s** on every previous attempt.
+
+Still open: 4 connections (`C2`/`R1` 3V3, `U3`/`Q1`, `U4.5`/`C13` VCC, `D7`). Finish them in the GUI's
+interactive router, which can shove existing traces — the Python API cannot, and three scripted attempts
+at hand-placing that copper each made it worse.
 
 Things to know before editing it:
 
@@ -211,6 +256,33 @@ exposes no DRC engine and no PNS router, so any hand-rolled geometry check is an
 the only real judge. Twelve shorts and twelve co-located holes reached a saved board before this became
 the habit.
 
+**Make DRC the acceptance test for every change, not a check afterwards.** Propose a position or a piece
+of copper, commit it, ask `kicad-cli`, keep it only if the error count did not rise — otherwise roll back
+and try the next candidate. Hand-rolled geometry has failed here five distinct ways, every one caught by
+DRC and none by reasoning: straight-line routes that ignored obstacles; a search whose *baseline already
+contained the defect*, so "no worse" preserved a short; a strict "no violations mentioning this part"
+test that passed a footprint placed **entirely off-board** (it touched nothing); a blanket keep-out fix
+applied to two rule areas that looked alike but were not; and reading one row of a free-space map as if
+the rows below it were clear.
+
+Two useful shapes for that loop: for **placement**, search outward from the part's *electrical* target
+(an earlier version minimised distance from where the part already sat and put the buck's input cap 54 mm
+away — valid, useless). Courtyard-vs-courtyard rectangle overlap *is* exact and fast, unlike a bbox test
+on traces. For **many small items** such as stitching vias, add them all and let DRC name the ones to
+drop, iterating to a fixed point — far cheaper than one DRC run per candidate.
+
+**SWIG ownership poisoning.** The first `Remove()`/`Delete()` breaks the type registry for the rest of the
+process: later `GetFootprints()`, `GetArea()`, even `FindFootprintByReference()` on a freshly
+`LoadBoard()`ed board hand back bare `SwigPyObject`s. Save-and-reload does **not** clear it. Bind every
+proxy you need *before* the first removal, and run each destructive phase as its own process. `Remove()`
+also fails on `ZONE` where `Delete()` works — delete zones before touching tracks.
+
+**There is no headless "Update PCB from Schematic".** Neither `kicad-cli` nor `pcbnew` exposes one, so
+push the netlist in pad by pad: build a `(ref, padnumber) → netname` map from
+`kicad-cli sch export netlist`, then `pad.SetNet(NETINFO_ITEM(board, name))`. Pads with an empty pad
+number (thermal slugs, connector pegs, USB shells) legitimately have no schematic net — count them, do
+not clear them.
+
 Use the real APIs instead of inferring geometry: `GetConnectedItems` for "is this pad actually joined",
 `FillIsolatedIslandsMap` for pour islands, `GetDesignSettings()` for clearances.
 
@@ -232,6 +304,35 @@ Freerouting 2.3.0, driven headless — these three flags are not optional:
 Do not re-run the router on an already-routed DSN to "finish" it — KiCad tags wires `(type route)`, which
 Freerouting reads as rip-uppable, and it destroys the routing. Freerouting also knows nothing of
 `.kicad_dru` custom rules; only net-class width and clearance survive the DSN export.
+
+**Rewriting those wires to `(type protect)` does not rescue that idea** — tried, and it came back with 26
+unrouted having *broken* nets that were already fine, including the hand-routed antenna and both USB-C CC
+pairs. Re-route from a stripped board instead.
+
+**Hold the inner ground layer as a plane by editing the DSN.** KiCad exports every copper layer as
+`(type signal)`, so the router will happily lay 560 mm of traces across In1 — the reference the RF trace
+depends on. Change that one layer to `(type power)` after export:
+
+```bash
+# in the exported .dsn, for the GND_plane layer only
+(layer GND_plane
+  (type power)      # was: (type signal)
+```
+
+Freerouting accepts it, routes the other three layers, and In1 comes back with **zero** tracks. It costs
+about one extra unrouted connection and is worth it.
+
+**Do not autoroute the antenna.** Left alone, Freerouting took `GNSS_ANT` through two vias onto B.Cu and
+necked `GNSS_RF_IN` to 0.225 mm against its 0.30 mm class — both change the impedance. Strip those nets
+after import and hand-route: ~8 mm total, F.Cu only, constant 0.30 mm, zero vias. 0.30 mm is right for
+grounded CPW at a 0.25 mm pour gap on JLCPCB's 4-layer 1.6 mm stackup (~50.9 Ω); keep the gap uniform,
+and do not "fix" the F.Cu zone's 0.25 mm local clearance down to the RF class's 0.20 mm.
+
+**Loaded taps on an RF line want to be under 1 mm.** The bias choke and ESD diode originally branched off
+the u.FL pad 3.6 and 3.9 mm away, which cost **0.49 dB at L1** — not because the stubs radiate but because
+the line *transforms* their loads: 3.9 mm nearly doubles the TVS's effective capacitance and 3.6 mm flips
+the inductor from inductive to capacitive, so instead of partly cancelling they add. Tapping the
+through-line at ~1 mm brings it to 0.09 dB.
 
 JLCEDA Pro: import needs schematic **and** PCB zipped together, and the import **drops the netlist**
 (`Nets (1) → None`), so Pro's DRC is meaningless on it — KiCad stays the source of truth.
