@@ -3083,7 +3083,7 @@
 				)
 			)
 		)
-		(property "Value" "GAQY212GS"
+		(property "Value" "AQY212GS"
 			(at 0 3 0)
 			(layer "F.Fab")
 			(uuid "a7f71ed5-e80a-4299-8d3f-1109125098f4")
@@ -7407,7 +7407,7 @@
 				)
 			)
 		)
-		(property "Value" "1206TD-2A"
+		(property "Value" "2A 63V fast 1206"
 			(at 0 1.83 0)
 			(layer "F.Fab")
 			(uuid "46856c20-c14c-4da4-a175-82edcb97b623")
@@ -7699,7 +7699,7 @@
 				)
 			)
 		)
-		(property "Value" "68nH"
+		(property "Value" "47nH"
 			(at 0 1.17 90)
 			(layer "F.Fab")
 			(uuid "528cf980-a8b3-49cd-952a-9d98fce41a9e")
@@ -11728,7 +11728,7 @@
 				)
 			)
 		)
-		(property "Value" "TVS_Cj0.6pF"
+		(property "Value" "ESD9L5.0ST5G 0.5pF"
 			(at 0 1.17 90)
 			(layer "F.Fab")
 			(uuid "df90fd5f-39f3-4ea8-9fac-6b461118aedc")
@@ -12482,7 +12482,7 @@
 				)
 			)
 		)
-		(property "Value" "SS110"
+		(property "Value" "MBR1H100SFT3G"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "f5a87da9-c373-46bd-8b17-118237d596cc")
@@ -17004,7 +17004,7 @@
 				)
 			)
 		)
-		(property "Value" "AP2112K-3.3"
+		(property "Value" "RT9013-33GB"
 			(at 0 2.4 0)
 			(layer "F.Fab")
 			(uuid "721d7c8f-303b-4f6d-9bc0-e0a74a8ac3cb")
@@ -18262,7 +18262,7 @@
 				)
 			)
 		)
-		(property "Value" "SS110"
+		(property "Value" "MBR1H100SFT3G"
 			(at 0 2.1 180)
 			(layer "F.Fab")
 			(uuid "40463114-07ac-4ec7-adb3-02f3d1abc3fb")
@@ -19175,7 +19175,7 @@
 				)
 			)
 		)
-		(property "Value" "1206TD-4A"
+		(property "Value" "4A 63V time-lag 1206"
 			(at 0 1.83 0)
 			(layer "F.Fab")
 			(uuid "1e15fcca-4b7a-4e8c-83ed-2b58f6838bd1")
@@ -21147,7 +21147,7 @@
 				)
 			)
 		)
-		(property "Value" "15uH"
+		(property "Value" "10uH"
 			(at 0 2.4 0)
 			(layer "F.Fab")
 			(uuid "ef728085-1d1f-4cd4-a26f-dc2ed4f51afa")
@@ -22507,7 +22507,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "MR01A-01211"
+		(property "Value" "TF-015"
 			(at 0 -7.376 0)
 			(layer "B.Fab")
 			(uuid "a6158c83-86a0-46b2-aed3-f38a573d4f16")

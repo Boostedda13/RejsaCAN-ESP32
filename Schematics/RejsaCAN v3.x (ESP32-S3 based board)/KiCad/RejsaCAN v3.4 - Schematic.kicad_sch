@@ -22045,7 +22045,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 12.7 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -22240,7 +22240,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "0402WGF1002TCE"
+		(property "Manufacturer Part" "0402WGF2212TCE"
 			(at 162.56 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -22273,7 +22273,7 @@
 				)
 			)
 		)
-		(property "Supplier" "LCSC"
+		(property "Supplier" ""
 			(at 162.56 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -22344,6 +22344,42 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "Supplier" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Supplier Part" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "DNP"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -22451,7 +22487,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "ESP32-S3-WROOM-1(N16R8)"
+		(property "Manufacturer Part" "ESP32-S3-WROOM-1-N16R8"
 			(at 78.74 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -22462,7 +22498,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "ESPRESSIF(乐鑫)"
+		(property "Manufacturer" "Espressif"
 			(at 78.74 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -22775,7 +22811,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "1N4148WS T4"
+		(property "Manufacturer Part" "1N4148WS"
 			(at 97.79 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -23192,7 +23228,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "MR01A-01211"
+		(property "Value" "TF-015"
 			(at 159.0548 88.9381 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23237,7 +23273,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "MR01A-01211"
+		(property "Manufacturer Part" "TF-015"
 			(at 163.83 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -23248,7 +23284,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "ATOM(爱特姆)"
+		(property "Manufacturer" "SOFNG"
 			(at 163.83 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -23259,7 +23295,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C479742"
+		(property "Supplier Part" "C113206"
 			(at 163.83 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -23397,7 +23433,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "CL21A226MAYNNNE"
+		(property "Manufacturer Part" "CL32B225KCJSNNE"
 			(at 85.09 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -23419,7 +23455,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C55151"
 			(at 85.09 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -23535,7 +23571,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 156.21 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -23651,7 +23687,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "LMR14006XDDCR"
+		(property "Manufacturer Part" "LMR51610XDBVR"
 			(at 102.87 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -23673,7 +23709,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C20539658"
 			(at 102.87 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -24135,7 +24171,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 200.66 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -24390,7 +24426,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 120.65 168.91 0)
 			(hide yes)
 			(show_name no)
@@ -24585,7 +24621,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "1N4148WS T4"
+		(property "Manufacturer Part" "1N4148WS"
 			(at 97.79 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -24746,7 +24782,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "1206TD-2A"
+		(property "Value" "2A 63V fast 1206"
 			(at 203.2 105.8291 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24791,7 +24827,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "MF-MSMF110/16-2"
+		(property "Manufacturer Part" "0466002.NRHF"
 			(at 218.44 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -24802,7 +24838,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "BOURNS"
+		(property "Manufacturer" "Littelfuse"
 			(at 218.44 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -24813,7 +24849,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C3105"
 			(at 218.44 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -24997,7 +25033,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "0402WGF3302TCE"
+		(property "Manufacturer Part" "0402WGF6982TCE"
 			(at 162.56 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -25030,7 +25066,7 @@
 				)
 			)
 		)
-		(property "Supplier" "LCSC"
+		(property "Supplier" ""
 			(at 162.56 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -25204,7 +25240,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "CL05B104KB54PNC"
+		(property "Manufacturer Part" "CL10B104KC8NNNC"
 			(at 210.82 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -25226,7 +25262,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C15725"
 			(at 210.82 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -25445,7 +25481,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "SS110"
+		(property "Value" "MBR1H100SFT3G"
 			(at 229.87 121.0691 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25490,7 +25526,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "DSS34"
+		(property "Manufacturer Part" "MBR1H100SFT3G"
 			(at 233.68 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -25501,7 +25537,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "STARSEA"
+		(property "Manufacturer" "onsemi"
 			(at 233.68 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -25512,7 +25548,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C235757"
 			(at 233.68 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -25696,7 +25732,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "SMF30A"
+		(property "Manufacturer Part" "SMAJ33CA"
 			(at 243.84 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -25707,7 +25743,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "DOWO"
+		(property "Manufacturer" "MDD"
 			(at 243.84 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -25718,7 +25754,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C115251"
 			(at 243.84 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -25835,7 +25871,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "G-Switch(品赞)"
+		(property "Manufacturer" "G-Switch"
 			(at 267.97 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -27262,7 +27298,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 43.18 21.59 0)
 			(hide yes)
 			(show_name no)
@@ -27627,7 +27663,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 142.24 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -27881,7 +27917,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Nanjing Micro One Elec"
+		(property "Manufacturer" "Micro One"
 			(at 29.21 152.4 0)
 			(hide yes)
 			(show_name no)
@@ -28185,6 +28221,24 @@
 				)
 			)
 		)
+		(property "Manufacturer" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "2.54mm 1x3 header"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Datasheet" ""
 			(at 264.16 76.2 0)
 			(hide yes)
@@ -28207,7 +28261,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C180248"
+		(property "Supplier Part" ""
 			(at 264.16 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -28218,7 +28272,7 @@
 				)
 			)
 		)
-		(property "Supplier" "LCSC"
+		(property "Supplier" ""
 			(at 264.16 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -28484,7 +28538,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 152.4 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -28682,7 +28736,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "15uH"
+		(property "Value" "10uH"
 			(at 135.8646 169.1767 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28749,7 +28803,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C254862"
 			(at 137.16 172.72 0)
 			(hide yes)
 			(show_name no)
@@ -29554,7 +29608,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "1N4148WS T4"
+		(property "Manufacturer Part" "1N4148WS"
 			(at 62.23 160.02 0)
 			(hide yes)
 			(show_name no)
@@ -29692,7 +29746,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 156.21 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -29819,7 +29873,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 50.8 172.72 0)
 			(hide yes)
 			(show_name no)
@@ -30146,7 +30200,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "SS110"
+		(property "Value" "MBR1H100SFT3G"
 			(at 229.87 104.5591 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -30191,7 +30245,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "DSS34"
+		(property "Manufacturer Part" "MBR1H100SFT3G"
 			(at 233.68 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -30202,7 +30256,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "STARSEA"
+		(property "Manufacturer" "onsemi"
 			(at 233.68 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -30213,7 +30267,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C235757"
 			(at 233.68 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -30375,6 +30429,24 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "Manufacturer" "Ckmtw"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "B-2100S04P-A110"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -30657,7 +30729,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 132.08 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -30750,6 +30822,24 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "Manufacturer" "Ckmtw"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "B-2100S04P-A110"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -30896,7 +30986,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "TI"
+		(property "Manufacturer" "Texas Instruments"
 			(at 180.34 22.86 0)
 			(hide yes)
 			(show_name no)
@@ -31030,7 +31120,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "1N4148WS T4"
+		(property "Manufacturer Part" "1N4148WS"
 			(at 57.15 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -31142,6 +31232,24 @@
 				)
 			)
 		)
+		(property "Manufacturer" "Molex"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "43045-0400"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Datasheet" ""
 			(at 265.43 113.03 0)
 			(hide yes)
@@ -31164,7 +31272,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C122413"
 			(at 265.43 113.03 0)
 			(hide yes)
 			(show_name no)
@@ -31274,7 +31382,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "GAQY212GS"
+		(property "Value" "AQY212GS"
 			(at 225.831 31.8389 0)
 			(hide yes)
 			(show_name no)
@@ -31296,6 +31404,24 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "Manufacturer" "Panasonic"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "AQY212GS"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -31320,7 +31446,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C719745"
 			(at 228.6 40.64 0)
 			(hide yes)
 			(show_name no)
@@ -31554,7 +31680,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "0402WGF4700TCE"
+		(property "Manufacturer Part" "0402WGF3900TCE"
 			(at 213.36 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -31587,7 +31713,7 @@
 				)
 			)
 		)
-		(property "Supplier" "LCSC"
+		(property "Supplier" ""
 			(at 213.36 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -31942,6 +32068,24 @@
 				)
 			)
 		)
+		(property "Manufacturer" "Quectel"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "LG290P03AAMD"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Datasheet" ""
 			(at 330 40 0)
 			(hide yes)
@@ -31975,7 +32119,7 @@
 				)
 			)
 		)
-		(property "Supplier" "LCSC"
+		(property "Supplier" "DigiKey"
 			(at 330 40 0)
 			(hide yes)
 			(show_name no)
@@ -33017,7 +33161,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 300 150 0)
 			(hide yes)
 			(show_name no)
@@ -33188,7 +33332,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 320 150 0)
 			(hide yes)
 			(show_name no)
@@ -33359,7 +33503,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 340 150 0)
 			(hide yes)
 			(show_name no)
@@ -33474,7 +33618,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "68nH"
+		(property "Value" "47nH"
 			(at 363.705 146.457 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -33519,7 +33663,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "SLP6028S100MTT"
+		(property "Manufacturer Part" "LQW15AN47NJ00D"
 			(at 365 150 0)
 			(hide yes)
 			(show_name no)
@@ -33530,7 +33674,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "Sunltech Tech"
+		(property "Manufacturer" "Murata"
 			(at 365 150 0)
 			(hide yes)
 			(show_name no)
@@ -33541,7 +33685,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C254862"
+		(property "Supplier Part" "C192855"
 			(at 365 150 0)
 			(hide yes)
 			(show_name no)
@@ -33690,7 +33834,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "CL05B104KO5NNNC"
+		(property "Manufacturer Part" "0402CG101J500NT"
 			(at 390 150 0)
 			(hide yes)
 			(show_name no)
@@ -33701,7 +33845,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "FH"
 			(at 390 150 0)
 			(hide yes)
 			(show_name no)
@@ -33712,7 +33856,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C1525"
+		(property "Supplier Part" "C1546"
 			(at 390 150 0)
 			(hide yes)
 			(show_name no)
@@ -33840,6 +33984,24 @@
 				)
 			)
 		)
+		(property "Manufacturer" "Hirose"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "U.FL-R-SMT-1(10)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Datasheet" ""
 			(at 300 180 0)
 			(hide yes)
@@ -33862,7 +34024,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C124378"
+		(property "Supplier Part" "C88373"
 			(at 300 180 0)
 			(hide yes)
 			(show_name no)
@@ -34382,7 +34544,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "0402WGF1001TCE"
+		(property "Manufacturer Part" "0402WGF100JTCE"
 			(at 365 160 0)
 			(hide yes)
 			(show_name no)
@@ -34404,7 +34566,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C25077"
 			(at 365 160 0)
 			(hide yes)
 			(show_name no)
@@ -34553,7 +34715,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "CL05B104KO5NNNC"
+		(property "Manufacturer Part" "0402CG101J500NT"
 			(at 352 160 0)
 			(hide yes)
 			(show_name no)
@@ -34564,7 +34726,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "FH"
 			(at 352 160 0)
 			(hide yes)
 			(show_name no)
@@ -34575,7 +34737,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C1546"
 			(at 352 160 0)
 			(hide yes)
 			(show_name no)
@@ -34724,7 +34886,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "CL05B104KO5NNNC"
+		(property "Manufacturer Part" "0402CG330J500NT"
 			(at 338 160 0)
 			(hide yes)
 			(show_name no)
@@ -34735,7 +34897,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "FH"
 			(at 338 160 0)
 			(hide yes)
 			(show_name no)
@@ -34746,7 +34908,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C1562"
 			(at 338 160 0)
 			(hide yes)
 			(show_name no)
@@ -34853,7 +35015,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "TVS_Cj0.6pF"
+		(property "Value" "ESD9L5.0ST5G 0.5pF"
 			(at 312.54 161.435 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -34898,7 +35060,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "CL05B104KO5NNNC"
+		(property "Manufacturer Part" "ESD9L5.0ST5G"
 			(at 310 160 0)
 			(hide yes)
 			(show_name no)
@@ -34909,7 +35071,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "onsemi"
 			(at 310 160 0)
 			(hide yes)
 			(show_name no)
@@ -34920,7 +35082,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C82326"
 			(at 310 160 0)
 			(hide yes)
 			(show_name no)
@@ -35024,7 +35186,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "AP2112K-3.3"
+		(property "Value" "RT9013-33GB"
 			(at 321.231 151.199 0)
 			(hide yes)
 			(show_name no)
@@ -35046,6 +35208,24 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "Manufacturer" "RICHTEK"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "RT9013-33GB"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -35070,7 +35250,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C47773"
 			(at 324 160 0)
 			(hide yes)
 			(show_name no)
@@ -35272,7 +35452,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "CL05B104KO5NNNC"
+		(property "Manufacturer Part" "CL05A105KA5NQNC"
 			(at 312 160 0)
 			(hide yes)
 			(show_name no)
@@ -35283,7 +35463,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "SAMSUNG"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 312 160 0)
 			(hide yes)
 			(show_name no)
@@ -35294,7 +35474,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C52923"
 			(at 312 160 0)
 			(hide yes)
 			(show_name no)
@@ -35444,6 +35624,24 @@
 				)
 			)
 		)
+		(property "Manufacturer" "JST"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "B4B-XH-A(LF)(SN)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Datasheet" ""
 			(at 265.43 130 0)
 			(hide yes)
@@ -35466,7 +35664,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C144395"
 			(at 265.43 130 0)
 			(hide yes)
 			(show_name no)
@@ -35642,7 +35840,7 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "1206TD-4A"
+		(property "Value" "4A 63V time-lag 1206"
 			(at 203.2 145.829 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -35687,7 +35885,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "MF-MSMF110/16-2"
+		(property "Manufacturer Part" "1206T4A63V"
 			(at 218.44 149.22 0)
 			(hide yes)
 			(show_name no)
@@ -35698,7 +35896,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "BOURNS"
+		(property "Manufacturer" "Walter Elec"
 			(at 218.44 149.22 0)
 			(hide yes)
 			(show_name no)
@@ -35709,7 +35907,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" ""
+		(property "Supplier Part" "C354899"
 			(at 218.44 149.22 0)
 			(hide yes)
 			(show_name no)
